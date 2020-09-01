@@ -1,0 +1,38 @@
+server:
+  post: 8080
+  servlet:
+    contextPath: /register
+
+logging.file: logs/blogging-service.log
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: register
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    generate-ddl: true
+  datasource:
+    initialization-mode: always
+    username: user01
+    password: duke
+    url: jdbc:postgresql://localhost:5432/dbdemo
+    driverClassName: org.postgresql.Driver
+  mvc:
+    static-path-pattern=/static/**
+  thymeleaf:
+    prefix: file:src/main/resources/templates/
+    cache: false
+  resources:
+    static-locations: file:src/main/resources/static/
+
+
+logging:
+  level:
+    root: INFO
+    org.hibernate.SQL: INFO
+    org.springframework.data: INFO
+    com.evoltech.dbdemo: INFO
