@@ -7,18 +7,13 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
 @Entity
 @Data
-public class Maestra implements Serializable {
-
-    public Maestra(String nombre){
-        this.nombre= nombre;
-    }
+public class Libro implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,18 +24,16 @@ public class Maestra implements Serializable {
 
     private LocalDateTime created;
     private LocalDateTime modified;
-    String nombre;
-    String apellido;
-    String email;
+
+    private String titulo;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Escuela escuela;
+    private Coleccion coleccion;
 
     @PrePersist
     void onCreate() {
         this.setCreated(LocalDateTime.now());
         this.setModified(LocalDateTime.now());
-        this.setGuid(UUID.randomUUID());
     }
 
     @PreUpdate

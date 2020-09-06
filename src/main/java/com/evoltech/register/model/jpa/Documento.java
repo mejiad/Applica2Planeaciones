@@ -5,20 +5,17 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
-
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode
 @Entity
 @Data
-public class Maestra implements Serializable {
-
-    public Maestra(String nombre){
-        this.nombre= nombre;
-    }
+public class Documento implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,18 +26,20 @@ public class Maestra implements Serializable {
 
     private LocalDateTime created;
     private LocalDateTime modified;
-    String nombre;
-    String apellido;
-    String email;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Escuela escuela;
+    private String nombre;
+    private String descripcion;
+    private String uri;
+    private String mimeType;
+    private String content;
+
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE})
+    private Set<Planeacion> planeaciones = new HashSet<Planeacion>();
 
     @PrePersist
     void onCreate() {
         this.setCreated(LocalDateTime.now());
         this.setModified(LocalDateTime.now());
-        this.setGuid(UUID.randomUUID());
     }
 
     @PreUpdate
