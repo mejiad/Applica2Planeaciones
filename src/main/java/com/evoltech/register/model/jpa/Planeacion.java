@@ -40,7 +40,7 @@ public class Planeacion implements Serializable {
         documento.getPlaneaciones().remove(this);
     }
 
-    public void removePlaneaciones() {
+    public void removeDocumentos() {
         Iterator<Documento> iterator = this.documentos.iterator();
 
         while(iterator.hasNext()){
@@ -52,7 +52,7 @@ public class Planeacion implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Coleccion coleccion;
+    private Libro libro;
 
     @PrePersist
     void onCreate() {

@@ -2,6 +2,7 @@ package com.evoltech.register;
 
 import com.evoltech.register.model.jpa.*;
 import com.evoltech.register.repository.*;
+import com.evoltech.register.util.COLECCION_NIVEL;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -165,6 +166,22 @@ public class RegisterApplicationTests {
 	@Order(7)
 	@Transactional
 	@Commit
+	void addColeccion() {
+	    List<Coleccion> listInicial = coleccionRepository.findAll();
+
+		Coleccion coleccion = new Coleccion();
+		coleccion.setNombre("Coleccion Test");
+		coleccion.setNivel("Nivel 1");
+		coleccionRepository.save(coleccion);
+
+		List<Coleccion> listFinal = coleccionRepository.findAll();
+		assertEquals(true, listFinal.size() > listInicial.size());
+	}
+
+	@Test
+	@Order(8)
+	@Transactional
+	@Commit
 	void addLicencia() {
 		Optional<Escuela> optionalEscuela = escuelaRepository.findById(1L);
 		if(optionalEscuela.isPresent()) {
@@ -175,28 +192,8 @@ public class RegisterApplicationTests {
 			licenciaRepository.save(licencia);
 			assertEquals(true, true);
 		} else {
-		    log.warn("No hay escuela");
+			log.warn("No hay escuela");
 			assertEquals(true, false);
-		}
-
-	}
-
-	@Test
-	@Order(8)
-	@Transactional
-	@Commit
-	void addColeccion() {
-	    List<Licencia> lista = licenciaRepository.findByNombre("Licencia Test");
-	    if (lista.size()> 0){
-	    	Licencia licencia = lista.get(0);
-			Coleccion coleccion = new Coleccion();
-			coleccion.setNombre("Coleccion Test");
-			licencia.addColeccion(coleccion);
-			coleccionRepository.save(coleccion);
-			assertEquals(true, true);
-
-		} else {
-	    	assertEquals(true, false);
 		}
 	}
 
@@ -242,19 +239,33 @@ public class RegisterApplicationTests {
 	@Order(11)
 	@Transactional
 	@Commit
-	void addPlaneacionToColeccion() {
-		Coleccion coleccion = null;
-		List<Coleccion> listaColeccion = coleccionRepository.findByNombre("Coleccion Test");
-		if (listaColeccion.size() > 0){
-			coleccion = listaColeccion.get(0);
+	void addPlaneacionToLibro() {
+		Libro libro = null;
+		List<Libro> listaLibro = libroRepository.findByTitulo("Libro Test");
+		if (listaLibro.size() > 0){
+			libro = listaLibro.get(0);
+			Planeacion planeacion = new Planeacion();
+			planeacion.setNombre("Planeacion Test");
+			planeacion.setLibro(libro);
+			libroRepository.save(libro);
 		}
+	}
 
-		Planeacion planeacion = new Planeacion();
-		planeacion.setNombre("Planeacion Test");
+	@Test
+	@Order(8)
+	@Transactional
+	@Commit
+	void addColeccionToLicencia() {
+		List<Licencia> listLicencia = licenciaRepository.findByNombre("Licencia Test");
+		List<Coleccion> listColeccion = coleccionRepository.findByNombre("Coleccion Test");
 
-		if (coleccion != null){
-			coleccion.addPlaneacion(planeacion);
-			coleccionRepository.save(coleccion);
+		if (listLicencia.size() > 0 && listColeccion.size() > 0){
+			Licencia licencia = listLicencia.get(0);
+			Coleccion coleccion = listColeccion.get(0);
+			licencia.setColeccion(coleccion);
+			licenciaRepository.save(licencia);
+		} else {
+			assertEquals(true, false);
 		}
 	}
 }

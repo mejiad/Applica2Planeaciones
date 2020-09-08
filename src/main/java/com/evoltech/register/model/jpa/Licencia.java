@@ -25,43 +25,20 @@ public class Licencia implements Serializable {
 
     @org.hibernate.annotations.Type(type = "pg-uuid")
     private UUID guid;
-
     private LicenciaEstado estatus;
-
     private String nombre;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Escuela escuela;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = false)
-    private List<Coleccion> colecciones = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Coleccion coleccion;
 
     private LocalDateTime created;
     private LocalDateTime modified;
 
     private LocalDateTime startDate;
     private LocalDateTime finishDate;
-
-    public void addColeccion(Coleccion coleccion){
-        this.colecciones.add(coleccion);
-        coleccion.setLicencia(this);
-    }
-
-    public void removeColeccion(Coleccion coleccion){
-        coleccion.setLicencia(null);
-        this.colecciones.remove(coleccion);
-    }
-
-    public void removeColecciones(){
-        Iterator<Coleccion> iterator = this.colecciones.iterator();
-
-        while (iterator.hasNext()){
-            Coleccion coleccion = iterator.next();
-
-            coleccion.setLicencia(null);
-            iterator.remove();
-        }
-    }
 
     @PrePersist
     void onCreate() {

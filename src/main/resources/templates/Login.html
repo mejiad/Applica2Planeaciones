@@ -15,7 +15,7 @@
     <link href="fonts/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-<form action="http://localhost:8080/register/loginPost" id="wrapper">
+<form action="http://localhost:8080/register/login" id="wrapper">
     <div id="box" class="animated bounceIn">
         <div id="top_header">
             <a href="#">
@@ -28,11 +28,11 @@
         </div>
         <di id="inputs">
             <div class="form-control">
-                <input type="text" placeholder="Email">
+                <input id="email" name="email" type="text" placeholder="email">
                 <i class="fa fa-envelope-o"></i>
             </div>
             <div class="form-control">
-                <input type="password" placeholder="Password">
+                <input id="password" name="password" type="password" placeholder="Password">
                 <i class="fa fa-key"></i>
             </div>
             <input type="submit" value="Sign In">

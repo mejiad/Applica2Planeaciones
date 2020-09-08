@@ -27,8 +27,9 @@ public class EscuelaController {
         return "HomePage";
     }
 
-    @RequestMapping(value = "/login", method= RequestMethod.GET)
-    public String login(Model model){
+    /*
+    @RequestMapping(value = "/loginForm", method= RequestMethod.GET)
+    public String loginForm(Model model){
         List<Escuela> escuelas = escuelaRepository.findAll();
         model.addAttribute("escuelas", escuelas);
         return "Login";
@@ -40,6 +41,7 @@ public class EscuelaController {
         model.addAttribute("escuelas", escuelas);
         return "Grupos";
     }
+     */
 
     @RequestMapping(value = "/escuelas", method= RequestMethod.GET)
     public String escuelas(Model model){

@@ -1,8 +1,11 @@
 package com.evoltech.register.model.jpa;
 
+import com.evoltech.register.util.COLECCION_NIVEL;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -24,12 +27,19 @@ public class Coleccion implements Serializable {
 
     @org.hibernate.annotations.Type(type = "pg-uuid")
     private UUID guid;
+    @NotEmpty
+    @NotBlank
     private String nombre;
+
+    @NotEmpty
+    @NotBlank
+    private String nivel;
+
     private LocalDateTime created;
     private LocalDateTime modified;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Licencia licencia;
+    @OneToMany(cascade = CascadeType.ALL,  orphanRemoval = false)
+    private List<Licencia> licencias = new ArrayList<Licencia>();
 
     // liga con libros
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = false)
@@ -54,27 +64,28 @@ public class Coleccion implements Serializable {
             libro.setColeccion(null);
             iterator.remove();
         }
-
     }
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = false)
-    private List<Planeacion> planeaciones = new ArrayList<>();
 
-    public void addPlaneacion(Planeacion planeacion){
-        this.planeaciones.add(planeacion);
-        planeacion.setColeccion(this);
+    public void addLicencia(Licencia licencia){
+        this.licencias.add(licencia);
+        licencia.setColeccion(this);
     }
 
-    public void removePlaneacion(Planeacion planeacion){
-        planeacion.setColeccion(null);
-        this.planeaciones.remove(planeacion);
+    public void removeLicencia(Licencia licencia){
+        licencia.setColeccion(null);
+        this.licencias.remove(licencia);
     }
 
-    public void removePlaneaciones(){
-        for (Planeacion planeacion : this.planeaciones) {
-            planeacion.setColeccion(null);
+    public void removeLicencias(){
+        Iterator<Licencia> iterator = this.licencias.iterator();
+
+        while (iterator.hasNext()){
+            Licencia licencia = iterator.next();
+
+            licencia.setColeccion(null);
+            iterator.remove();
         }
-        this.planeaciones = new ArrayList<Planeacion>();
     }
 
     @PrePersist
