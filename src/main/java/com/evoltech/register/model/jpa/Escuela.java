@@ -26,12 +26,13 @@ public class Escuela implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @org.hibernate.annotations.Type(type = "pg-uuid")
+    // @org.hibernate.annotations.Type(type = "pg-uuid")
     private UUID guid;
 
     private LocalDateTime created;
     private LocalDateTime modified;
 
+    @Column(unique = true)
     String nombre;
 
     // tiene varias maestras
@@ -109,7 +110,6 @@ public class Escuela implements Serializable {
             iterator.remove();
         }
     }
-
 
     @PrePersist
     void onCreate() {

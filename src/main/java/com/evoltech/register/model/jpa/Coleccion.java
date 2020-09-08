@@ -18,15 +18,22 @@ import java.util.UUID;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"nombre", "nivel"}))
 @Data
 public class Coleccion implements Serializable {
+
+    public Coleccion(String nombre, String nivel){
+        this.nombre = nombre;
+        this. nivel = nivel;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @org.hibernate.annotations.Type(type = "pg-uuid")
+    // @org.hibernate.annotations.Type(type = "pg-uuid")
     private UUID guid;
+
     @NotEmpty
     @NotBlank
     private String nombre;
@@ -92,7 +99,9 @@ public class Coleccion implements Serializable {
     void onCreate() {
         this.setCreated(LocalDateTime.now());
         this.setModified(LocalDateTime.now());
+        this.setGuid(UUID.randomUUID());
     }
+
 
     @PreUpdate
     void onUpdate() {

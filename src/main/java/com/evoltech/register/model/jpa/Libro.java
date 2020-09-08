@@ -18,11 +18,14 @@ import java.util.UUID;
 @Data
 public class Libro implements Serializable {
 
+    public Libro(String titulo){
+        this.titulo = titulo;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @org.hibernate.annotations.Type(type = "pg-uuid")
     private UUID guid;
 
     private LocalDateTime created;
@@ -61,6 +64,7 @@ public class Libro implements Serializable {
     void onCreate() {
         this.setCreated(LocalDateTime.now());
         this.setModified(LocalDateTime.now());
+        this.setGuid(UUID.randomUUID());
     }
 
     @PreUpdate

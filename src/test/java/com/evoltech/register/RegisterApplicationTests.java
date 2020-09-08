@@ -70,7 +70,6 @@ public class RegisterApplicationTests {
 
 		Maestra maestra = new Maestra();
 		maestra.setNombre("Maestra Test");
-		maestra.setApellido("Apellido Test");
 		maestra.setEscuela(escuela);
 
 		escuelaRepository.save(escuela);

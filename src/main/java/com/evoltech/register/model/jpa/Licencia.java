@@ -19,11 +19,13 @@ import java.util.UUID;
 @Data
 public class Licencia implements Serializable {
 
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @org.hibernate.annotations.Type(type = "pg-uuid")
+    // @org.hibernate.annotations.Type(type = "pg-uuid")
     private UUID guid;
     private LicenciaEstado estatus;
     private String nombre;
@@ -44,6 +46,7 @@ public class Licencia implements Serializable {
     void onCreate() {
         this.setCreated(LocalDateTime.now());
         this.setModified(LocalDateTime.now());
+        this.setGuid(UUID.randomUUID());
     }
 
     @PreUpdate

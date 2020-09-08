@@ -16,7 +16,8 @@ import java.util.UUID;
 @Data
 public class Maestra implements Serializable {
 
-    public Maestra(String nombre){
+    public Maestra(String email, String nombre){
+        this.email= email;
         this.nombre= nombre;
     }
 
@@ -24,14 +25,15 @@ public class Maestra implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @org.hibernate.annotations.Type(type = "pg-uuid")
+    // @org.hibernate.annotations.Type(type = "pg-uuid")
     private UUID guid;
+
+    @Column(unique = true)
+    String email;
+    String nombre;
 
     private LocalDateTime created;
     private LocalDateTime modified;
-    String nombre;
-    String apellido;
-    String email;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Escuela escuela;
