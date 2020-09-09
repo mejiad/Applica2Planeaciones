@@ -1,6 +1,8 @@
 package com.evoltech.register.model.jpa;
 
+import com.evoltech.register.model.base.BaseJpaEntity;
 import com.evoltech.register.util.COLECCION_NIVEL;
+import com.fasterxml.jackson.databind.ser.Serializers;
 import lombok.*;
 
 import javax.persistence.*;
@@ -20,7 +22,7 @@ import java.util.UUID;
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"nombre", "nivel"}))
 @Data
-public class Coleccion implements Serializable {
+public class Coleccion extends BaseJpaEntity<Long> implements Serializable {
 
     public Coleccion(String nombre, String nivel){
         this.nombre = nombre;
@@ -31,24 +33,14 @@ public class Coleccion implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // @org.hibernate.annotations.Type(type = "pg-uuid")
-    private UUID guid;
+    @NotEmpty @NotBlank private String nombre;
 
-    @NotEmpty
-    @NotBlank
-    private String nombre;
-
-    @NotEmpty
-    @NotBlank
-    private String nivel;
-
-    private LocalDateTime created;
-    private LocalDateTime modified;
+    @NotEmpty @NotBlank private String nivel;
 
     @OneToMany(cascade = CascadeType.ALL,  orphanRemoval = false)
     private List<Licencia> licencias = new ArrayList<Licencia>();
 
-    // liga con libros
+    //+<<<<<<<<<<<<<<<<<<<<<<<<<<<<[  liga con libros  ]>>>>>>>>>>>>>>>>>>>>>>>>>>>//
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = false)
     private List<Libro> libros = new ArrayList<>();
 
@@ -73,7 +65,6 @@ public class Coleccion implements Serializable {
         }
     }
 
-
     public void addLicencia(Licencia licencia){
         this.licencias.add(licencia);
         licencia.setColeccion(this);
@@ -93,19 +84,6 @@ public class Coleccion implements Serializable {
             licencia.setColeccion(null);
             iterator.remove();
         }
-    }
-
-    @PrePersist
-    void onCreate() {
-        this.setCreated(LocalDateTime.now());
-        this.setModified(LocalDateTime.now());
-        this.setGuid(UUID.randomUUID());
-    }
-
-
-    @PreUpdate
-    void onUpdate() {
-        this.setModified(LocalDateTime.now());
     }
 
 }

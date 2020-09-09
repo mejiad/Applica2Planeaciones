@@ -1,12 +1,12 @@
 package com.evoltech.register.model.jpa;
 
+import com.evoltech.register.model.base.BaseJpaEntity;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.*;
 
 @Builder
@@ -15,7 +15,7 @@ import java.util.*;
 @EqualsAndHashCode
 @Entity
 @Data
-public class Planeacion implements Serializable {
+public class Planeacion extends BaseJpaEntity<Long> implements Serializable {
 
     public Planeacion(String nombre){
         this.nombre = nombre;
@@ -25,15 +25,7 @@ public class Planeacion implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // @org.hibernate.annotations.Type(type = "pg-uuid")
-    private UUID guid;
-
-    private LocalDateTime created;
-    private LocalDateTime modified;
-
-    @NotEmpty
-    @NotBlank
-    private String nombre;
+    @NotEmpty @NotBlank private String nombre;
 
     @ManyToMany(mappedBy = "planeaciones")
     private Set<Documento> documentos = new HashSet<Documento>();
@@ -62,15 +54,4 @@ public class Planeacion implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     private Libro libro;
 
-    @PrePersist
-    void onCreate() {
-        this.setCreated(LocalDateTime.now());
-        this.setModified(LocalDateTime.now());
-        this.setGuid(UUID.randomUUID());
-    }
-
-    @PreUpdate
-    void onUpdate() {
-        this.setModified(LocalDateTime.now());
-    }
 }

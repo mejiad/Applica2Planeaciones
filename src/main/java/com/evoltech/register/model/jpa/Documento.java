@@ -1,5 +1,6 @@
 package com.evoltech.register.model.jpa;
 
+import com.evoltech.register.model.base.BaseJpaEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -15,17 +16,11 @@ import java.util.UUID;
 @EqualsAndHashCode
 @Entity
 @Data
-public class Documento implements Serializable {
+public class Documento extends BaseJpaEntity<Long> implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    // @org.hibernate.annotations.Type(type = "pg-uuid")
-    private UUID guid;
-
-    private LocalDateTime created;
-    private LocalDateTime modified;
 
     private String nombre;
     private String descripcion;
@@ -36,15 +31,4 @@ public class Documento implements Serializable {
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Planeacion> planeaciones = new HashSet<Planeacion>();
 
-    @PrePersist
-    void onCreate() {
-        this.setCreated(LocalDateTime.now());
-        this.setModified(LocalDateTime.now());
-        this.setGuid(UUID.randomUUID());
-    }
-
-    @PreUpdate
-    void onUpdate() {
-        this.setModified(LocalDateTime.now());
-    }
 }

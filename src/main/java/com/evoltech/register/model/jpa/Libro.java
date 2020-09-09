@@ -1,5 +1,6 @@
 package com.evoltech.register.model.jpa;
 
+import com.evoltech.register.model.base.BaseJpaEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -18,7 +19,7 @@ import java.util.UUID;
 @EqualsAndHashCode
 @Entity
 @Data
-public class Libro implements Serializable {
+public class Libro extends BaseJpaEntity<Long> implements Serializable {
 
     public Libro(String titulo){
         this.titulo = titulo;
@@ -28,14 +29,7 @@ public class Libro implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private UUID guid;
-
-    private LocalDateTime created;
-    private LocalDateTime modified;
-
-    @NotEmpty
-    @NotBlank
-    private String titulo;
+    @NotEmpty @NotBlank private String titulo;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Coleccion coleccion;
@@ -43,12 +37,12 @@ public class Libro implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = false)
     private List<Planeacion> planeaciones = new ArrayList<Planeacion>();
 
-    public void addPLaneacion(Planeacion planeacion){
+    public void addPlaneacion(Planeacion planeacion){
         this.planeaciones.add(planeacion);
         planeacion.setLibro(this);
     }
 
-    public void removePLaneacion(Planeacion planeacion){
+    public void removePlaneacion(Planeacion planeacion){
         planeacion.setLibro(null);
         this.planeaciones.remove(planeacion);
     }
@@ -64,15 +58,4 @@ public class Libro implements Serializable {
         }
     }
 
-    @PrePersist
-    void onCreate() {
-        this.setCreated(LocalDateTime.now());
-        this.setModified(LocalDateTime.now());
-        this.setGuid(UUID.randomUUID());
-    }
-
-    @PreUpdate
-    void onUpdate() {
-        this.setModified(LocalDateTime.now());
-    }
 }

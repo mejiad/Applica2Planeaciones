@@ -36,6 +36,7 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
     public void onApplicationEvent(final ApplicationReadyEvent event){
         log.warn("<<<<<<<<<<<<<<<<<<<<<<<<    on Application ready   >>>>>>>>>>>>>>>>>>>>>>>>>>");
         log.warn("<<<<<<<<<<<<<<<<<<<<<<<<    Init database     >>>>>>>>>>>>>>>>>>>>>>>>>>");
+        log.warn("<<<<<<<<<<<<<<<<<<<<<<<<    ESCUELAS     >>>>>>>>>>>>>>>>>>>>>>>>>>");
 
         Escuela escuela01 = new Escuela("Escuela 01");
         Escuela escuela02 = new Escuela("Escuela 02");
@@ -44,30 +45,37 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
         escuelaRepository.save(escuela02);
         escuelaRepository.save(escuela03);
 
+        log.warn("+<<<<<<<<<<<<<<<<<<<<<<<<[ escuela01.isNew: " + escuela01.isNew() + " ]>>>>>>>>>>>>>>>>>>>>>>>>>>");
+
+        log.warn("+<<<<<<<<<<<<<<<<<<<<<<<<[    MAESTRAS     ]>>>>>>>>>>>>>>>>>>>>>>>>>>+");
         Maestra maestra01 = new Maestra("email 01", "nombre 01");
-        // maestraRepository.save(maestra01);
         escuela01.addMaestra(maestra01);
+        maestraRepository.save(maestra01);
+        // escuela01.addMaestra(maestra01);
 
         Maestra maestra02 = new Maestra("email 02", "nombre 02");
-        // maestraRepository.save(maestra02);
         escuela01.addMaestra(maestra02);
+        maestraRepository.save(maestra02);
+        // escuela01.addMaestra(maestra02);
 
         Maestra maestra03 = new Maestra("email 03", "nombre 03");
-        // maestraRepository.save(maestra03);
-        escuela02.addMaestra(maestra03);
+        maestraRepository.save(maestra03);
+        // escuela02.addMaestra(maestra03);
 
         Maestra maestra04 = new Maestra("email 04", "nombre 04");
-        // maestraRepository.save(maestra04);
-        escuela01.addMaestra(maestra04);
+        maestraRepository.save(maestra04);
+        // escuela01.addMaestra(maestra04);
 
-        escuelaRepository.save(escuela01);
-        escuelaRepository.save(escuela02);
+        // escuelaRepository.save(escuela01);
+        // escuelaRepository.save(escuela02);
 
         maestraRepository.save(new Maestra("email 05", "nombre 05"));
         maestraRepository.save(new Maestra("email 06", "nombre 06"));
         maestraRepository.save(new Maestra("email 07", "nombre 07"));
         maestraRepository.save(new Maestra("email 08", "nombre 08"));
         maestraRepository.save(new Maestra("email 09", "nombre 09"));
+
+        log.warn("+<<<<<<<<<<<<<<<<<<<<<<<<[    COLECCIONES    ]>>>>>>>>>>>>>>>>>>>>>>>>>>+");
 
         Coleccion coleccionNivel01 = new Coleccion("coleccion 00", "Nivel 01");
         coleccionRepository.save(coleccionNivel01);
@@ -87,6 +95,7 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
         coleccionRepository.save(new Coleccion("coleccion 02", "Nivel 03"));
         coleccionRepository.save(new Coleccion("coleccion 03", "Nivel 03"));
 
+        log.warn("+<<<<<<<<<<<<<<<<<<<<<<<<[    LIBROS    ]>>>>>>>>>>>>>>>>>>>>>>>>>>+");
         Libro libro01 = new Libro("Titulo 01");
         Libro libro02 = new Libro("Titulo 02");
         Libro libro03 = new Libro("Titulo 03");
@@ -109,26 +118,31 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
         libroRepository.save(new Libro("Titulo 18"));
         libroRepository.save(new Libro("Titulo 19"));
 
+        log.warn("+<<<<<<<<<<<<<<<<<<<<<<<<[    LICENCIAS    ]>>>>>>>>>>>>>>>>>>>>>>>>>>+");
+
         Licencia licencia01 = new Licencia("Licencia 01");
-        escuela01.addLicencia(licencia01);
-        // licencia01.setColeccion(coleccionNivel01);
-
         Licencia licencia02 = new Licencia("Licencia 02");
-        escuela01.addLicencia(licencia02);
-
-        licenciaRepository.save(licencia01);
-        licenciaRepository.save(licencia02);
-
         Licencia licencia03 = new Licencia("Licencia 03");
-        escuela02.addLicencia(licencia03);
-        licenciaRepository.save(licencia03);
-
-
         licenciaRepository.save(new Licencia("Licencia 04"));
         licenciaRepository.save(new Licencia("Licencia 05"));
         licenciaRepository.save(new Licencia("Licencia 06"));
         licenciaRepository.save(new Licencia("Licencia 07"));
         licenciaRepository.save(new Licencia("Licencia 08"));
+
+
+        /*
+        escuela01.addLicencia(licencia01);
+        escuela02.addLicencia(licencia03);
+        escuela01.addLicencia(licencia02);
+         */
+
+        licenciaRepository.save(licencia01);
+        licenciaRepository.save(licencia02);
+        licenciaRepository.save(licencia03);
+        escuelaRepository.save(escuela01);
+        escuelaRepository.save(escuela02);
+
+        log.warn("+<<<<<<<<<<<<<<<<<<<<<<<<[    PLANEACIONES    ]>>>>>>>>>>>>>>>>>>>>>>>>>>+");
 
         Planeacion planeacion01 = new Planeacion("Planeacion 01");
         Planeacion planeacion02 = new Planeacion("Planeacion 02");
@@ -140,10 +154,10 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
         planeacionRepository.save(planeacion03);
         planeacionRepository.save(planeacion04);
 
-        libro01.addPLaneacion(planeacion01);
-        libro02.addPLaneacion(planeacion02);
-        libro03.addPLaneacion(planeacion03);
-        libro01.addPLaneacion(planeacion04);
+        libro01.addPlaneacion(planeacion01);
+        libro02.addPlaneacion(planeacion02);
+        libro03.addPlaneacion(planeacion03);
+        libro01.addPlaneacion(planeacion04);
         libroRepository.save(libro01);
         libroRepository.save(libro02);
         libroRepository.save(libro03);

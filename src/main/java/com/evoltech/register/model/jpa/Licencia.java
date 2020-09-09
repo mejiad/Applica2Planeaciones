@@ -1,5 +1,6 @@
 package com.evoltech.register.model.jpa;
 
+import com.evoltech.register.model.base.BaseJpaEntity;
 import com.evoltech.register.util.LicenciaEstado;
 import lombok.*;
 
@@ -8,15 +9,14 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 @Entity
 @Data
-public class Licencia implements Serializable {
+public class Licencia extends BaseJpaEntity<Long> implements Serializable {
 
     public Licencia(String nombre){
         this.nombre = nombre;
@@ -24,7 +24,6 @@ public class Licencia implements Serializable {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private UUID guid;
     @NotEmpty @NotBlank private String nombre;
     private LicenciaEstado estatus;
 
@@ -35,21 +34,7 @@ public class Licencia implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     private Coleccion coleccion;
 
-    private LocalDateTime created;
-    private LocalDateTime modified;
-
     private LocalDateTime startDate;
     private LocalDateTime finishDate;
 
-    @PrePersist
-    void onCreate() {
-        this.setCreated(LocalDateTime.now());
-        this.setModified(LocalDateTime.now());
-        this.setGuid(UUID.randomUUID());
-    }
-
-    @PreUpdate
-    void onUpdate() {
-        this.setModified(LocalDateTime.now());
-    }
 }

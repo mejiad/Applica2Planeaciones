@@ -1,5 +1,6 @@
 package com.evoltech.register.model.jpa;
 
+import com.evoltech.register.model.base.BaseJpaEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -18,20 +19,24 @@ import java.util.UUID;
 @EqualsAndHashCode
 @Entity
 @Data
-public class Escuela implements Serializable {
+public class Escuela extends BaseJpaEntity<Long> implements Serializable {
 
     public Escuela(String nombre){
         this.nombre = nombre;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id;
     @NotEmpty @NotBlank @Column(unique = true) String nombre;
+    /*
     private UUID guid;
     private LocalDateTime created;
     private LocalDateTime modified;
+     */
 
+    /*
+    @Transient
+    private boolean isNew = true;
+     */
 
     // tiene varias maestras
     @OneToMany(cascade = CascadeType.ALL)
@@ -39,12 +44,16 @@ public class Escuela implements Serializable {
 
     // tiene una o varias licencias
     // @OneToMany(cascade = CascadeType.ALL, mappedBy= "escuela", orphanRemoval = false)
+    /*
     @OneToMany(cascade = CascadeType.ALL)
     private List<Licencia> licencias = new ArrayList<>();
+     */
 
     // tiene varios grupos
+    /*
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Grupo> grupos = new ArrayList<>();
+     */
 
 
     public void addMaestra(Maestra maestra){
@@ -68,6 +77,7 @@ public class Escuela implements Serializable {
         }
     }
 
+    /*
     public void addLicencia(Licencia licencia){
         this.licencias.add(licencia);
         licencia.setEscuela(this);
@@ -88,7 +98,9 @@ public class Escuela implements Serializable {
             iterator.remove();
         }
     }
+     */
 
+    /*
     public void addGrupo(Grupo grupo){
         this.grupos.add(grupo);
         grupo.setEscuela(this);
@@ -109,9 +121,12 @@ public class Escuela implements Serializable {
             iterator.remove();
         }
     }
+     */
 
+    /*
     @PrePersist
     void onCreate() {
+        markNotNew();
         this.setCreated(LocalDateTime.now());
         this.setModified(LocalDateTime.now());
         this.setGuid(UUID.randomUUID());
@@ -121,4 +136,12 @@ public class Escuela implements Serializable {
     void onUpdate() {
         this.setModified(LocalDateTime.now());
     }
+
+    @PostLoad
+    void isNotNew(){
+        markNotNew();
+    }
+
+     */
+
 }
