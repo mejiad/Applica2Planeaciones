@@ -3,6 +3,8 @@ package com.evoltech.register.model.jpa;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -21,21 +23,17 @@ public class Maestra implements Serializable {
         this.nombre= nombre;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    // @org.hibernate.annotations.Type(type = "pg-uuid")
     private UUID guid;
-
-    @Column(unique = true)
-    String email;
-    String nombre;
+    @NotEmpty @NotBlank @Column(unique = true) String email;
+    @NotEmpty @NotBlank String nombre;
 
     private LocalDateTime created;
     private LocalDateTime modified;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "escuela_id")
     private Escuela escuela;
 
     @PrePersist

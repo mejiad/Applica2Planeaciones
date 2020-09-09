@@ -63,18 +63,14 @@ public class RegisterApplicationTests {
 	@Commit
 	void addEscuela() {
 		log.info("<<<<<<<<<<<<<<<<<<<<<  2   >>>>>>>>>>>>>>>>>>>>>>>>");
-		Escuela escuela = new Escuela();
-		escuela.setNombre("Escuela Test");
+		Escuela escuela = new Escuela("Escuela Test");
+
+		Maestra maestra = new Maestra("email test", "Maestra Test");
+		escuela.addMaestra(maestra);
 
 		escuelaRepository.save(escuela);
 
-		Maestra maestra = new Maestra();
-		maestra.setNombre("Maestra Test");
-		maestra.setEscuela(escuela);
-
-		escuelaRepository.save(escuela);
-
-		maestraRepository.save(maestra);
+		// maestraRepository.save(maestra);
 
 		escuelaRepository.count() ;
 		assert(escuelaRepository.count() > 8);

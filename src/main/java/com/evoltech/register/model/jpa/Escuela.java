@@ -3,6 +3,8 @@ package com.evoltech.register.model.jpa;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -25,22 +27,19 @@ public class Escuela implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    // @org.hibernate.annotations.Type(type = "pg-uuid")
+    @NotEmpty @NotBlank @Column(unique = true) String nombre;
     private UUID guid;
-
     private LocalDateTime created;
     private LocalDateTime modified;
 
-    @Column(unique = true)
-    String nombre;
 
     // tiene varias maestras
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Maestra> maestras = new ArrayList<>();
 
     // tiene una o varias licencias
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    // @OneToMany(cascade = CascadeType.ALL, mappedBy= "escuela", orphanRemoval = false)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Licencia> licencias = new ArrayList<>();
 
     // tiene varios grupos

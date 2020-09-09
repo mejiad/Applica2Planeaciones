@@ -4,11 +4,10 @@ import com.evoltech.register.util.LicenciaEstado;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.util.UUID;
 
 @Builder
@@ -19,18 +18,18 @@ import java.util.UUID;
 @Data
 public class Licencia implements Serializable {
 
+    public Licencia(String nombre){
+        this.nombre = nombre;
+    }
 
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    // @org.hibernate.annotations.Type(type = "pg-uuid")
     private UUID guid;
+    @NotEmpty @NotBlank private String nombre;
     private LicenciaEstado estatus;
-    private String nombre;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "escuela_id")
     private Escuela escuela;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -3,6 +3,8 @@ package com.evoltech.register.model.jpa;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -31,6 +33,8 @@ public class Libro implements Serializable {
     private LocalDateTime created;
     private LocalDateTime modified;
 
+    @NotEmpty
+    @NotBlank
     private String titulo;
 
     @ManyToOne(fetch = FetchType.LAZY)
