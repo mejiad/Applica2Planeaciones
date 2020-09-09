@@ -2,7 +2,6 @@ package com.evoltech.register;
 
 import com.evoltech.register.model.jpa.*;
 import com.evoltech.register.repository.*;
-import com.evoltech.register.util.COLECCION_NIVEL;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -65,18 +64,17 @@ public class RegisterApplicationTests {
 		log.info("<<<<<<<<<<<<<<<<<<<<<  2   >>>>>>>>>>>>>>>>>>>>>>>>");
 		Escuela escuela = new Escuela("Escuela Test");
 
-		// Maestra maestra = new Maestra("email test", "Maestra Test");
-		// escuela.addMaestra(maestra);
+		Maestra maestra = new Maestra("email test", "Maestra Test");
+		escuela.addMaestra(maestra);
 
 		escuelaRepository.save(escuela);
 
-		// maestraRepository.save(maestra);
+		maestraRepository.save(maestra);
 
 		escuelaRepository.count() ;
 		assert(escuelaRepository.count() > 8);
 	}
 
-	/*
 	@Test
 	@Order(3)
 	@Transactional
@@ -85,16 +83,15 @@ public class RegisterApplicationTests {
 		log.info("<<<<<<<<<<<<<<<<<<<<<  3   >>>>>>>>>>>>>>>>>>>>>>>>");
 		Optional<Escuela> optional = escuelaRepository.findById(1L);
 
+		Escuela escuela = null;
 		if(optional.isPresent()) {
-			Escuela escuela = optional.get();
-			Grupo grupo = new Grupo();
-			grupo.setNombre("Grupo Test");
-			grupo.setEscuela(escuela);
+			escuela = optional.get();
+			Grupo grupo = new Grupo("Grupo Test");
 			grupoRepository.save(grupo);
-			assert (true);
-		} else {
-			assert (false);
+			escuela.addGrupo(grupo);;
+			escuelaRepository.save(escuela);
 		}
+		assertEquals(true, escuela != null);
 	}
 
 	@Test
@@ -125,37 +122,34 @@ public class RegisterApplicationTests {
 	@Order(5)
 	@Transactional
 	@Commit
-    void findMaestraEscuela() {
+    void findEscuela() {
 		log.info("<<<<<<<<<<<<<<<<<<<<<  5   >>>>>>>>>>>>>>>>>>>>>>>>");
-		List<Maestra> list = maestraRepository.findByNombre("Maestra Test");
+		Optional<Escuela> optionalList = escuelaRepository.findById(1L);
+		Escuela escuela = null;
+		if (optionalList.isPresent()) {
+			escuela = optionalList.get();
+			log.info("Valor de escuela nombre: " + escuela.getNombre());
+		}
 
-		Maestra maestra = list.get(0);
-		log.info("Valor de maestra.nombre: " + maestra.getNombre());
-
-		Escuela escuela = maestra.getEscuela();
-		log.info("Valor de escuela nombre: " + escuela.getNombre());
-
-		assertEquals(true, list.size() > 0 );
+		assertEquals("Uno", escuela.getNombre());
 	}
 
-	 */
 
-	/*
 	@Test
 	@Order(6)
 	@Transactional
 	@Commit
-	void findMaestraEscuelaGrupo() {
+	void findEscuelaGrupo() {
 		log.info("<<<<<<<<<<<<<<<<<<<<<  6   >>>>>>>>>>>>>>>>>>>>>>>>");
-		List<Maestra> list = maestraRepository.findByNombre("Maestra Test");
 
-		Maestra maestra = list.get(0);
-		log.info("Valor de maestra.nombre: " + maestra.getNombre());
+		List<Escuela> escuelaList = escuelaRepository.findByNombre("Uno");
+		Escuela escuela = null;
+		if (escuelaList.size() > 0){
+		    escuela = escuelaList.get(0);
+			log.info("Valor de escuela nombre: " + escuela.getNombre());
+        }
 
-		Escuela escuela = maestra.getEscuela();
-		log.info("Valor de escuela nombre: " + escuela.getNombre());
-
-		// List<Grupo> listGrupos = escuela.getGrupos();
+		List<Grupo> listGrupos = escuela.getGrupos();
 		log.info("Lista grupos size: " + listGrupos.size());
 
 		assertEquals(true, listGrupos.size() > 0 );
@@ -234,6 +228,7 @@ public class RegisterApplicationTests {
 		}
 	}
 
+
 	@Test
 	@Order(11)
 	@Transactional
@@ -245,13 +240,13 @@ public class RegisterApplicationTests {
 			libro = listaLibro.get(0);
 			Planeacion planeacion = new Planeacion();
 			planeacion.setNombre("Planeacion Test");
-			planeacion.setLibro(libro);
+			libro.addPlaneacion(planeacion);
 			libroRepository.save(libro);
 		}
 	}
 
 	@Test
-	@Order(8)
+	@Order(12)
 	@Transactional
 	@Commit
 	void addColeccionToLicencia() {
@@ -261,11 +256,11 @@ public class RegisterApplicationTests {
 		if (listLicencia.size() > 0 && listColeccion.size() > 0){
 			Licencia licencia = listLicencia.get(0);
 			Coleccion coleccion = listColeccion.get(0);
-			licencia.setColeccion(coleccion);
-			licenciaRepository.save(licencia);
+			coleccion.addLicencia(licencia);
+			coleccionRepository.save(coleccion);
 		} else {
 			assertEquals(true, false);
 		}
 	}
-	 */
+
 }

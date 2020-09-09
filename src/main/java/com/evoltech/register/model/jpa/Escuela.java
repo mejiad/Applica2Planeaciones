@@ -7,16 +7,14 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.UUID;
 
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 @Entity
 @Data
 public class Escuela extends BaseJpaEntity<Long> implements Serializable {
@@ -27,16 +25,6 @@ public class Escuela extends BaseJpaEntity<Long> implements Serializable {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id;
     @NotEmpty @NotBlank @Column(unique = true) String nombre;
-    /*
-    private UUID guid;
-    private LocalDateTime created;
-    private LocalDateTime modified;
-     */
-
-    /*
-    @Transient
-    private boolean isNew = true;
-     */
 
     // tiene varias maestras
     @OneToMany(cascade = CascadeType.ALL)
@@ -44,17 +32,11 @@ public class Escuela extends BaseJpaEntity<Long> implements Serializable {
 
     // tiene una o varias licencias
     // @OneToMany(cascade = CascadeType.ALL, mappedBy= "escuela", orphanRemoval = false)
-    /*
     @OneToMany(cascade = CascadeType.ALL)
     private List<Licencia> licencias = new ArrayList<>();
-     */
 
-    // tiene varios grupos
-    /*
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Grupo> grupos = new ArrayList<>();
-     */
-
 
     public void addMaestra(Maestra maestra){
         this.maestras.add(maestra);
@@ -77,7 +59,6 @@ public class Escuela extends BaseJpaEntity<Long> implements Serializable {
         }
     }
 
-    /*
     public void addLicencia(Licencia licencia){
         this.licencias.add(licencia);
         licencia.setEscuela(this);
@@ -98,9 +79,7 @@ public class Escuela extends BaseJpaEntity<Long> implements Serializable {
             iterator.remove();
         }
     }
-     */
 
-    /*
     public void addGrupo(Grupo grupo){
         this.grupos.add(grupo);
         grupo.setEscuela(this);
@@ -121,27 +100,5 @@ public class Escuela extends BaseJpaEntity<Long> implements Serializable {
             iterator.remove();
         }
     }
-     */
-
-    /*
-    @PrePersist
-    void onCreate() {
-        markNotNew();
-        this.setCreated(LocalDateTime.now());
-        this.setModified(LocalDateTime.now());
-        this.setGuid(UUID.randomUUID());
-    }
-
-    @PreUpdate
-    void onUpdate() {
-        this.setModified(LocalDateTime.now());
-    }
-
-    @PostLoad
-    void isNotNew(){
-        markNotNew();
-    }
-
-     */
 
 }

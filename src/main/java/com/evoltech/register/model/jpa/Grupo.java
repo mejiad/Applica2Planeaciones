@@ -5,8 +5,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Builder
 @AllArgsConstructor
@@ -15,6 +13,11 @@ import java.util.UUID;
 @Entity
 @Data
 public class Grupo extends BaseJpaEntity<Long> implements Serializable {
+
+    public Grupo(String nombre){
+        this.nombre = nombre;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,6 +25,6 @@ public class Grupo extends BaseJpaEntity<Long> implements Serializable {
     private String nombre;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "escuela_id")
     private Escuela escuela;
-
 }

@@ -1,19 +1,15 @@
 package com.evoltech.register.model.jpa;
 
 import com.evoltech.register.model.base.BaseJpaEntity;
-import com.evoltech.register.util.COLECCION_NIVEL;
-import com.fasterxml.jackson.databind.ser.Serializers;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.UUID;
 
 @Builder
 @NoArgsConstructor
@@ -40,7 +36,6 @@ public class Coleccion extends BaseJpaEntity<Long> implements Serializable {
     @OneToMany(cascade = CascadeType.ALL,  orphanRemoval = false)
     private List<Licencia> licencias = new ArrayList<Licencia>();
 
-    //+<<<<<<<<<<<<<<<<<<<<<<<<<<<<[  liga con libros  ]>>>>>>>>>>>>>>>>>>>>>>>>>>>//
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = false)
     private List<Libro> libros = new ArrayList<>();
 
