@@ -1,6 +1,7 @@
 package com.evoltech.register.model.jpa;
 
 import com.evoltech.register.model.base.BaseJpaEntity;
+import com.evoltech.register.util.ColeccionNivel;
 import lombok.*;
 
 import javax.persistence.*;
@@ -32,6 +33,9 @@ public class Coleccion extends BaseJpaEntity<Long> implements Serializable {
     @NotEmpty @NotBlank private String nombre;
 
     @NotEmpty @NotBlank private String nivel;
+
+    @Enumerated(EnumType.STRING)
+    private ColeccionNivel nivelStr;
 
     @OneToMany(cascade = CascadeType.ALL,  orphanRemoval = false)
     private List<Licencia> licencias = new ArrayList<Licencia>();

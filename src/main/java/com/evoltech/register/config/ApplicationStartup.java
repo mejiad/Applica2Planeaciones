@@ -2,6 +2,7 @@ package com.evoltech.register.config;
 
 import com.evoltech.register.model.jpa.*;
 import com.evoltech.register.repository.*;
+import com.evoltech.register.util.ColeccionNivel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,6 +79,7 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
         log.warn("+<<<<<<<<<<<<<<<<<<<<<<<<[    COLECCIONES    ]>>>>>>>>>>>>>>>>>>>>>>>>>>+");
 
         Coleccion coleccionNivel01 = new Coleccion("coleccion 00", "Nivel 01");
+        coleccionNivel01.setNivelStr(ColeccionNivel.NIVEL_1);
         coleccionRepository.save(coleccionNivel01);
         coleccionRepository.save(new Coleccion("coleccion 01", "Nivel 01"));
         coleccionRepository.save(new Coleccion("coleccion 02", "Nivel 01"));

@@ -2,6 +2,7 @@ package com.evoltech.register;
 
 import com.evoltech.register.model.jpa.*;
 import com.evoltech.register.repository.*;
+import com.evoltech.register.util.ColeccionNivel;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -72,7 +73,7 @@ public class RegisterApplicationTests {
 		maestraRepository.save(maestra);
 
 		escuelaRepository.count() ;
-		assert(escuelaRepository.count() > 8);
+		assert(escuela.getMaestras().size() > 0);
 	}
 
 	@Test
@@ -98,30 +99,22 @@ public class RegisterApplicationTests {
 	@Order(4)
 	@Transactional
 	@Commit
-	void findMaestra() {
+	void findEscuelaAddGrupo() {
 		log.info("<<<<<<<<<<<<<<<<<<<<<  4   >>>>>>>>>>>>>>>>>>>>>>>>");
 		List<Escuela> list = escuelaRepository.findByNombre("Escuela Test");
-
-		Grupo grupo = new Grupo();
-
-		grupo.setNombre("Grupo Test 2");
-
 		Escuela escuela = list.get(0);
-		grupo.setEscuela(escuela);
+
+		Grupo grupo = new Grupo("Grupo Test 2");
 		grupoRepository.save(grupo);
 
-		// escuela.addGrupo(grupo);
+		escuela.addGrupo(grupo);
 		escuelaRepository.save(escuela);
 
-		log.info("Escuela: " + escuela.getNombre());
-
-		assert(list.size() > 0);
+		assertEquals("Grupo Test 2", escuela.getGrupos().get(0).getNombre());
 	}
 
 	@Test
 	@Order(5)
-	@Transactional
-	@Commit
     void findEscuela() {
 		log.info("<<<<<<<<<<<<<<<<<<<<<  5   >>>>>>>>>>>>>>>>>>>>>>>>");
 		Optional<Escuela> optionalList = escuelaRepository.findById(1L);
@@ -138,7 +131,6 @@ public class RegisterApplicationTests {
 	@Test
 	@Order(6)
 	@Transactional
-	@Commit
 	void findEscuelaGrupo() {
 		log.info("<<<<<<<<<<<<<<<<<<<<<  6   >>>>>>>>>>>>>>>>>>>>>>>>");
 
@@ -160,6 +152,7 @@ public class RegisterApplicationTests {
 	@Transactional
 	@Commit
 	void addColeccion() {
+		log.info("<<<<<<<<<<<<<<<<<<<<<  7   >>>>>>>>>>>>>>>>>>>>>>>>");
 	    List<Coleccion> listInicial = coleccionRepository.findAll();
 
 		Coleccion coleccion = new Coleccion();
@@ -176,6 +169,7 @@ public class RegisterApplicationTests {
 	@Transactional
 	@Commit
 	void addLicencia() {
+		log.info("<<<<<<<<<<<<<<<<<<<<<  8   >>>>>>>>>>>>>>>>>>>>>>>>");
 		Optional<Escuela> optionalEscuela = escuelaRepository.findById(1L);
 		if(optionalEscuela.isPresent()) {
 			Escuela escuela = optionalEscuela.get();
@@ -195,6 +189,7 @@ public class RegisterApplicationTests {
 	@Transactional
 	@Commit
 	void addLibro() {
+		log.info("<<<<<<<<<<<<<<<<<<<<<  9   >>>>>>>>>>>>>>>>>>>>>>>>");
 		Libro libro = new Libro();
 		libro.setTitulo("Libro Test");
 		libroRepository.save(libro);
@@ -205,6 +200,7 @@ public class RegisterApplicationTests {
 	@Transactional
 	@Commit
 	void addLibroToColeccion() {
+		log.info("<<<<<<<<<<<<<<<<<<<<<  10   >>>>>>>>>>>>>>>>>>>>>>>>");
 		// buscar coleccion
 		Coleccion coleccion = null;
 		Libro libro = null;
@@ -234,6 +230,7 @@ public class RegisterApplicationTests {
 	@Transactional
 	@Commit
 	void addPlaneacionToLibro() {
+		log.info("<<<<<<<<<<<<<<<<<<<<<  11   >>>>>>>>>>>>>>>>>>>>>>>>");
 		Libro libro = null;
 		List<Libro> listaLibro = libroRepository.findByTitulo("Libro Test");
 		if (listaLibro.size() > 0){
@@ -250,6 +247,7 @@ public class RegisterApplicationTests {
 	@Transactional
 	@Commit
 	void addColeccionToLicencia() {
+		log.info("<<<<<<<<<<<<<<<<<<<<<  12   >>>>>>>>>>>>>>>>>>>>>>>>");
 		List<Licencia> listLicencia = licenciaRepository.findByNombre("Licencia Test");
 		List<Coleccion> listColeccion = coleccionRepository.findByNombre("Coleccion Test");
 
@@ -261,6 +259,32 @@ public class RegisterApplicationTests {
 		} else {
 			assertEquals(true, false);
 		}
+	}
+
+	@Test
+	@Order(13)
+	void displayColeccionNivel() {
+
+		log.info("<<<<<<<<<<<<<<<<<<<<<  13   >>>>>>>>>>>>>>>>>>>>>>>>");
+		List<Coleccion> list = coleccionRepository.findAll();
+
+		for (Coleccion var: list ) {
+		    log.warn("Valor de coleccion.nivelStr: " + var.getNivelStr());
+		}
+		assertEquals(true, list.size() > 0);
+	}
+
+	@Test
+	@Order(14)
+	void findColeccionNivelStr() {
+		log.info("<<<<<<<<<<<<<<<<<<<<<  14   >>>>>>>>>>>>>>>>>>>>>>>>");
+
+		List<Coleccion> list = coleccionRepository.findByNivelStr(ColeccionNivel.NIVEL_1);
+
+		for (Coleccion var: list ) {
+			log.warn("Valor de coleccion.nivelStr: " + var.getNivelStr());
+		}
+		assertEquals(true, list.size() > 0);
 	}
 
 }
