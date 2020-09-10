@@ -18,16 +18,32 @@ import java.util.UUID;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Entity
+@NamedQuery(name = "Libro.todosOrdenados",
+query = "select u from Libro u where nombreColeccion = ?1 order by nombreColeccion, nivel, categoria")
 @Data
 public class Libro extends BaseJpaEntity<Long> implements Serializable {
 
-    public Libro(String titulo){
+    public Libro(String titulo, String nivel, String tipo, String nombreColeccion ){
         this.titulo = titulo;
+        this.nivel = nivel;
+        this.categoria = tipo;
+        this.nombreColeccion = nombreColeccion;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank
+    @NotEmpty
+    private String nivel; // Solo: Nivel 1, Nivel 2 y Nivel 3
+    // TODO: Ver las categorias posibles
+    @NotBlank
+    @NotEmpty
+    private String categoria; // Libro de trabajo, libro de tareas, etc.O//
+    @NotBlank
+    @NotEmpty
+    private String nombreColeccion;
 
     @NotEmpty @NotBlank private String titulo;
 

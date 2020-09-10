@@ -190,8 +190,8 @@ public class RegisterApplicationTests {
 	@Commit
 	void addLibro() {
 		log.info("<<<<<<<<<<<<<<<<<<<<<  9   >>>>>>>>>>>>>>>>>>>>>>>>");
-		Libro libro = new Libro();
-		libro.setTitulo("Libro Test");
+		Libro libro;
+		libro = new Libro("Libro Test", "Nivel 1", "Libro de Texto", "El ABC" );
 		libroRepository.save(libro);
     }
 
@@ -279,7 +279,7 @@ public class RegisterApplicationTests {
 	void findColeccionNivelStr() {
 		log.info("<<<<<<<<<<<<<<<<<<<<<  14   >>>>>>>>>>>>>>>>>>>>>>>>");
 
-		List<Coleccion> list = coleccionRepository.findByNivelStr(ColeccionNivel.NIVEL_1);
+		List<Coleccion> list = coleccionRepository.findByNivel("Nivel 1");
 
 		for (Coleccion var: list ) {
 			log.warn("Valor de coleccion.nivelStr: " + var.getNivelStr());

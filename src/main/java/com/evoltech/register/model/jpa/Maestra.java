@@ -25,15 +25,6 @@ public class Maestra extends BaseJpaEntity<Long> implements Serializable {
     private Long id;
     @NotEmpty @NotBlank @Column(unique = true) String email;
     @NotEmpty @NotBlank String nombre;
-    /*
-    private UUID guid;
-
-    @Transient
-    private boolean isNew = true;
-
-    private LocalDateTime created;
-    private LocalDateTime modified;
-     */
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "escuela_id")

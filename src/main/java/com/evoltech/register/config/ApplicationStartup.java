@@ -78,47 +78,80 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
 
         log.warn("+<<<<<<<<<<<<<<<<<<<<<<<<[    COLECCIONES    ]>>>>>>>>>>>>>>>>>>>>>>>>>>+");
 
-        Coleccion coleccionNivel01 = new Coleccion("coleccion 00", "Nivel 01");
-        coleccionNivel01.setNivelStr(ColeccionNivel.NIVEL_1);
-        coleccionRepository.save(coleccionNivel01);
-        coleccionRepository.save(new Coleccion("coleccion 01", "Nivel 01"));
-        coleccionRepository.save(new Coleccion("coleccion 02", "Nivel 01"));
-        coleccionRepository.save(new Coleccion("coleccion 03", "Nivel 01"));
+        Coleccion coleccion01 = new Coleccion("El ABC", "Nivel 01");
+        Coleccion coleccion02 = new Coleccion("EL 123", "Nivel 01");
+        Coleccion coleccion03 = new Coleccion("Multicampos", "Nivel 01");
+        Coleccion coleccion04 = new Coleccion("Letra Cursiva", "Nivel 01");
 
-        Coleccion coleccionNivel02 = new Coleccion("coleccion 00", "Nivel 02");
-        coleccionRepository.save(coleccionNivel02);
-        coleccionRepository.save(new Coleccion("coleccion 01", "Nivel 02"));
-        coleccionRepository.save(new Coleccion("coleccion 02", "Nivel 02"));
-        coleccionRepository.save(new Coleccion("coleccion 03", "Nivel 02"));
-
-        Coleccion coleccionNivel03 = new Coleccion("coleccion 00", "Nivel 03");
-        coleccionRepository.save(coleccionNivel03);
-        coleccionRepository.save(new Coleccion("coleccion 01", "Nivel 03"));
-        coleccionRepository.save(new Coleccion("coleccion 02", "Nivel 03"));
-        coleccionRepository.save(new Coleccion("coleccion 03", "Nivel 03"));
+        coleccionRepository.save(coleccion01);
+        coleccionRepository.save(coleccion02);
+        coleccionRepository.save(coleccion03);
+        coleccionRepository.save(coleccion04);
 
         log.warn("+<<<<<<<<<<<<<<<<<<<<<<<<[    LIBROS    ]>>>>>>>>>>>>>>>>>>>>>>>>>>+");
-        Libro libro01 = new Libro("Titulo 01");
-        Libro libro02 = new Libro("Titulo 02");
-        Libro libro03 = new Libro("Titulo 03");
+        Libro libro01 = new Libro("Titulo 01", "Nivel 1", "Libro de Trabajo", "El ABC");
+        Libro libro02 = new Libro("Titulo 02", "Nivel 1", "Libro de Trabajo", "El ABC");
+        Libro libro03 = new Libro("Titulo 03", "Nivel 1", "Libro de Tareas", "El ABC");
+        Libro libro04 = new Libro("Titulo 04", "Nivel 2", "Libro de Trabajo" , "El ABC");
+        Libro libro05 = new Libro("Titulo 05", "Nivel 2", "Libro de Trabajo", "El ABC");
+        Libro libro06 = new Libro("Titulo 06", "Nivel 2", "Libro de Tareas", "El ABC");
+        Libro libro07 = new Libro("Titulo 07", "Nivel 2", "Libro de Tareas", "El ABC");
+        Libro libro08 = new Libro("Titulo 08", "Nivel 3", "Libro de Trabajo", "El ABC");
+        Libro libro09 = new Libro("Titulo 09", "Nivel 3", "Libro de Trabajo", "El ABC");
+        Libro libro10 = new Libro("Titulo 10", "Nivel 3", "Libro de Trabajo", "El ABC");
+        Libro libro11 = new Libro("Titulo 11", "Nivel 3", "Libro de Trabajo", "El ABC");
+        Libro libro12 = new Libro("Titulo 12", "Nivel 3", "Libro de Trabajo", "El ABC");
+        Libro libro13 = new Libro("Titulo 13", "Nivel 3", "Libro de Tareas", "El ABC");
+        Libro libro14 = new Libro("Titulo 14", "Nivel 3", "Libro de Tareas", "El ABC");
+        Libro libro15 = new Libro("Titulo 15", "Nivel 3", "Libro de Tareas", "El ABC");
+
         libroRepository.save(libro01);
         libroRepository.save(libro02);
         libroRepository.save(libro03);
-        libroRepository.save(new Libro("Titulo 04"));
-        libroRepository.save(new Libro("Titulo 05"));
-        libroRepository.save(new Libro("Titulo 06"));
-        libroRepository.save(new Libro("Titulo 07"));
-        libroRepository.save(new Libro("Titulo 08"));
-        libroRepository.save(new Libro("Titulo 09"));
-        libroRepository.save(new Libro("Titulo 10"));
-        libroRepository.save(new Libro("Titulo 11"));
-        libroRepository.save(new Libro("Titulo 12"));
-        libroRepository.save(new Libro("Titulo 13"));
-        libroRepository.save(new Libro("Titulo 15"));
-        libroRepository.save(new Libro("Titulo 16"));
-        libroRepository.save(new Libro("Titulo 17"));
-        libroRepository.save(new Libro("Titulo 18"));
-        libroRepository.save(new Libro("Titulo 19"));
+        libroRepository.save(libro04);
+        libroRepository.save(libro05);
+        libroRepository.save(libro06);
+        libroRepository.save(libro07);
+        libroRepository.save(libro08);
+        libroRepository.save(libro09);
+        libroRepository.save(libro10);
+        libroRepository.save(libro11);
+        libroRepository.save(libro12);
+        libroRepository.save(libro13);
+        libroRepository.save(libro14);
+        libroRepository.save(libro15);
+
+        libro01 = new Libro("Titulo 01", "Nivel 1", "Libro de Trabajo", "El 123");
+        libro02 = new Libro("Titulo 02", "Nivel 1", "Libro de Trabajo", "El 123");
+        libro03 = new Libro("Titulo 03", "Nivel 1", "Libro de Tareas", "El 123");
+        libro04 = new Libro("Titulo 04", "Nivel 2", "Libro de Trabajo" , "El 123");
+        libro05 = new Libro("Titulo 05", "Nivel 2", "Libro de Trabajo", "El 123");
+        libro06 = new Libro("Titulo 06", "Nivel 2", "Libro de Tareas", "El 123");
+        libro07 = new Libro("Titulo 07", "Nivel 2", "Libro de Tareas", "El 123");
+        libro08 = new Libro("Titulo 08", "Nivel 3", "Libro de Trabajo", "El 123");
+        libro09 = new Libro("Titulo 09", "Nivel 3", "Libro de Trabajo", "El 123");
+        libro10 = new Libro("Titulo 10", "Nivel 3", "Libro de Trabajo", "El 123");
+        libro11 = new Libro("Titulo 11", "Nivel 3", "Libro de Trabajo", "El 123");
+        libro12 = new Libro("Titulo 12", "Nivel 3", "Libro de Trabajo", "El 123");
+        libro13 = new Libro("Titulo 13", "Nivel 3", "Libro de Tareas", "El 123");
+        libro14 = new Libro("Titulo 14", "Nivel 3", "Libro de Tareas", "El 123");
+        libro15 = new Libro("Titulo 15", "Nivel 3", "Libro de Tareas", "El 123");
+
+        libroRepository.save(libro01);
+        libroRepository.save(libro02);
+        libroRepository.save(libro03);
+        libroRepository.save(libro04);
+        libroRepository.save(libro05);
+        libroRepository.save(libro06);
+        libroRepository.save(libro07);
+        libroRepository.save(libro08);
+        libroRepository.save(libro09);
+        libroRepository.save(libro10);
+        libroRepository.save(libro11);
+        libroRepository.save(libro12);
+        libroRepository.save(libro13);
+        libroRepository.save(libro14);
+        libroRepository.save(libro15);
 
         log.warn("+<<<<<<<<<<<<<<<<<<<<<<<<[    LICENCIAS    ]>>>>>>>>>>>>>>>>>>>>>>>>>>+");
 
