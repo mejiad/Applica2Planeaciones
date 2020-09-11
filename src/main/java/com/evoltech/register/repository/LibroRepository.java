@@ -1,9 +1,7 @@
 package com.evoltech.register.repository;
 
-import com.evoltech.register.model.jpa.Escuela;
 import com.evoltech.register.model.jpa.Libro;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 

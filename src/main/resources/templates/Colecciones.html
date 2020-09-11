@@ -1,208 +1,153 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloud Admin Dashboard</title>
-    <meta name="description" content="Cloud Admin Panel">
-    <meta name="keywords" content="Admin, Dashboard, Bootstrap3, Sass, transform, CSS3, HTML5, Web design, UI Design, Responsive Dashboard, Responsive Admin, Admin Theme, Best Admin UI, Bootstrap Theme, Bootstrap, Light weight Admin Dashboard,Light weight, Light weight Admin, Light weight Dashboard">
-    <meta name="author" content="Bootstrap Gallery">
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>Dashboard Template · Bootstrap</title>
 
-    <!-- Bootstrap CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
 
-    <!-- Animate CSS -->
-    <link href="css/animate.css" rel="stylesheet" media="screen">
+    <!-- Bootstrap core CSS
+    -->
+    <link href="appcss/bootstrap.min.css" rel="stylesheet">
 
-    <!-- date range -->
-    <link rel="stylesheet" type="text/css" href="css/daterange.css">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
 
-    <!-- Main CSS -->
-    <link href="css/main.css" rel="stylesheet" media="screen">
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto;
+  grid-gap: 2px;
+  background-color: #BCC6CC;
+  padding: 2px;
+}
 
-    <!-- Slidebar CSS -->
-    <link rel="stylesheet" type="text/css" href="css/slidebars.css">
-
-    <!-- Font Awesome -->
-    <link href="fonts/font-awesome.min.css" rel="stylesheet">
-
-    <!-- Metrize Fonts -->
-    <link href="fonts/metrize.css" rel="stylesheet">
-
-    <!-- HTML5 shiv and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
-
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.2);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 20px;
+}
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
 </head>
-
 <body>
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Company name</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link" href="#">Sign out</a>
+        </li>
+    </ul>
+</nav>
 
-<!-- Left sidebar start -->
-<!-- Left sidebar end -->
+<div class="container-fluid">
+    <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="sidebar-sticky pt-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            <span data-feather="home"></span>
+                            El ABC <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="file"></span>
+                            El 123
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="shopping-cart"></span>
+                            Multicampos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="users"></span>
+                            Letra Cursiva
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="bar-chart-2"></span>
+                            I do Speak English
+                        </a>
+                    </li>
+                </ul>
 
-<!-- Dashboard Wrapper Start -->
-<div class="dashboard-wrapper">
-
-    <!-- Header start -->
-    <header>
-        <ul class="pull-left" id="left-nav">
-            <li class="hidden-lg hidden-md hidden-sm">
-                <div class="logo-mob clearfix">
-                    <h2><div class="fs1" aria-hidden="true" data-icon=""></div><span>Cloud Admin</span></h2>
-                </div>
-            </li>
-            <li>
-                <div class="custom-search hidden-sm hidden-xs pull-left">
-                    <input type="text" class="search-query" placeholder="Search here">
-                    <i class="fa fa-search"></i>
-                </div>
-            </li>
-        </ul>
-        <div class="pull-right">
-            <ul id="mini-nav" class="clearfix">
-                <li class="list-box hidden-xs dropdown">
-                    <a id="drop1" href="#" role="button" class="dropdown-toggle current-user" data-toggle="dropdown">
-                        Sandy <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu sm fadeInUp animated messages">
-                        <li class="dropdown-content">
-                            <a href="#">Edit Profile</a>
-                            <a href="#">Change Password</a>
-                            <a href="#">Settings</a>
-                            <a href="login.html">Logout</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="list-box hidden-lg hidden-md hidden-sm" id="mob-nav">
-                    <a href="#">
-                        <i class="fa fa-reorder"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </header>
-    <!-- Header ends -->
-
-    <!-- Right sidebar start -->
-    <div class="sb-slidebar sb-right sb-close">
-
-        <!-- User Profile Start -->
-        <section class="user-profile">
-            <div class="profile-container">
-                <img src="img/admin1.png" class="user-img" alt="User Image">
-                <div class="desc">
-                    <h4>John Doe</h4>
-                    <p class="text-info">UX Designer</p>
-                </div>
             </div>
-            <ul class="ftr-link">
-                <li>
-                    <a href="javascript:;">
-                        <div class="fs1" aria-hidden="true" data-icon=""></div>985
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <div class="fs1" aria-hidden="true" data-icon=""></div> 999
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <div class="fs1" aria-hidden="true" data-icon=""></div> 143
-                    </a>
-                </li>
-            </ul>
-        </section>
-        <!-- User Profile End -->
+        </nav>
 
-        <!-- Online Users start -->
-        <!-- Online Users end -->
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <!-- <<<<<<<<<<<<<<<<<   inicio de row >>>>>>>>>>>>>>>>> -->
 
-        <!-- Checkout start -->
-        <!-- Checkout end -->
+            <div th:each="nivel : ${niveles}">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">
+                    <p th:text="${nivel[0].nivel}">value</p>
+                    </h1>
+                </div>
+                <div class="grid-container" style="grid-auto-flow: row;">
 
-        <!-- Notifications Start -->
-        <!-- Notifications End -->
+                    <div th:each="libro : ${nivel}">
+                        <p th:text="${libro.titulo}">value</p>
 
+                        <div class="item1">
+                            <div class="col-12 themed-grid-col">
+
+                                <div class="card mb-4 shadow-sm">
+                                    <div class="card-header text-center">
+                                        <h4 class="my-0 font-weight-normal"><p th:text="${libro.nivel}">value</p></h4>
+                                    </div>
+
+                                    <div class="card-body text-center">
+                                        <img src="images/ABC_trabajo_1_N3.png">
+                                        <ul class="list-unstyled mt-3 mb-4">
+                                            <p th:text="${libro.categoria}">value</p>
+                                        </ul>
+                                        <button type="button" class="btn btn-lg btn-block btn-primary">Get started</button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
     </div>
-    <!-- Right sidebar end -->
-
-    <!-- Main Container Start -->
-    <div class="main-container">
-
-        <!-- Top Bar Starts -->
-        <div class="top-bar clearfix">
-            <div class="page-title">
-                <h4><div class="fs1" aria-hidden="true" data-icon=""></div>
-                    Default Layout <a href="invoice.html" class="samll">Bonus Pages 2</a></h4>
-            </div>
-        </div>
-        <!-- Top Bar Ends -->
-
-        <!-- Container fluid Starts -->
-        <div class="container-fluid">
-
-            <!-- Spacer starts -->
-            <div class="spacer-xs">
-
-                Aqui va el spacer
-                <div class="panel-body">
-                    <form role="form">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Check me out
-                            </label>
-                        </div>
-                        <button type="submit" class="btn btn-success">Submit</button>
-                    </form>
-                </div>
-
-            </div>
-            <!-- Spacer ends -->
-            línea dos
-            del contenido
-
-        </div>
-        <!-- Container fluid ends -->
-
-    </div>
-    <!-- Main Container Start -->
-
-    <!-- Footer Start -->
-    <footer>
-        Copyright Cloud Admin <span>2015</span>. All Rights Reserved.
-    </footer>
-    <!-- Footer end -->
-
 </div>
-<!-- Dashboard Wrapper End -->
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery.js"></script>
-
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
-
-<!-- Animated Right Sidebar -->
-<script src="js/slidebars.js"></script>
-
-<!-- Date Range -->
-<script src="js/daterange/moment.js"></script>
-<script src="js/daterange/daterangepicker.js"></script>
-
-<!-- Custom JS -->
-<script src="js/custom.js"></script>
-
-</body>
-</html>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<!--
+<script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="js/dist/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<script src="js/dist/dashboard.js"></script></body>
+-->
+</body></html>
