@@ -2,6 +2,7 @@ package com.evoltech.register.controller;
 
 import com.evoltech.register.model.jpa.Escuela;
 import com.evoltech.register.model.jpa.Libro;
+import com.evoltech.register.model.jpa.Planeacion;
 import com.evoltech.register.repository.EscuelaRepository;
 import com.evoltech.register.repository.LibroRepository;
 import org.slf4j.Logger;
@@ -9,8 +10,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,34 +65,19 @@ public class EscuelaController {
         return "Colecciones";
     }
 
-    @RequestMapping(value = "/libroDocs/{id}", method= RequestMethod.GET)
-    public String libroDocs(Model model){
-        List<Libro> libros = libroRepository.todosOrdenados("El ABC");
+    @RequestMapping(value = "/planeacion/{id}", method= RequestMethod.GET)
+    public String planeaciones(@PathVariable String id, Model model){
+        log.warn("Id del libro a buscar (debe ser 16 para test): " + id);
+        Long idLong = Long.getLong(id);
+        Libro libro = libroRepository.getOne(16L);
+        log.warn("Libro: " + libro.getTitulo());
+        log.warn("Libro.getPlaneaciones().size(): " + libro.getPlaneaciones().size());
 
-        ArrayList<ArrayList<Libro>> niveles = new ArrayList<>();
-        String nivelStr = null;
-        ArrayList<Libro> librosArr = new ArrayList<>();
-        for (Libro l: libros) {
-            if (nivelStr == null){
-                nivelStr = l.getNivel();
-                librosArr = new ArrayList<>();
-            }
-            if (nivelStr.equals(l.getNivel())){
-                librosArr.add(l);
-                log.warn("Libro: " + l.getTitulo() + "  " +  l.getNombreColeccion() + " " +  l.getNivel());
-            } else {
-                niveles.add(librosArr);
-                librosArr = new ArrayList<>();
-                nivelStr = l.getNivel();
-                librosArr.add(l);
-            }
-        }
-        niveles.add(librosArr);
-        log.warn("Niveles: " + niveles.toString());
+        List<Planeacion> planeaciones = libro.getPlaneaciones();
 
-        model.addAttribute("niveles", niveles);
+        model.addAttribute("planeaciones", planeaciones);
 
-        return "LibroDocumentos";
+        return "Planeaciones";
     }
 
     /*

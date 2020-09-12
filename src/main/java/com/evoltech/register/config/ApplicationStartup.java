@@ -36,6 +36,11 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
     @Autowired
     DocumentoRepository documentoRepository;
 
+    public void onApplicationEvent(final ApplicationReadyEvent event) {
+        log.warn("<<<<<<<<<<<<<<<<<<<<<<<<    on Application ready   >>>>>>>>>>>>>>>>>>>>>>>>>>");
+    }
+
+    /*
     @Override
     public void onApplicationEvent(final ApplicationReadyEvent event){
         log.warn("<<<<<<<<<<<<<<<<<<<<<<<<    on Application ready   >>>>>>>>>>>>>>>>>>>>>>>>>>");
@@ -202,23 +207,6 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
         documentoRepository.save(documento20);
         documentoRepository.save(documento21);
 
-        /*
-        libro01.addDocumento(documento01);
-        libro01.addDocumento(documento02);
-        libro01.addDocumento(documento03);
-        libro01.addDocumento(documento04);
-        libro01.addDocumento(documento05);
-        libro01.addDocumento(documento06);
-        libro01.addDocumento(documento07);
-
-        libro02.addDocumento(documento08);
-        libro02.addDocumento(documento09);
-        libro02.addDocumento(documento10);
-        libro02.addDocumento(documento11);
-
-         */
-
-
         log.warn("+<<<<<<<<<<<<<<<<<<<<<<<<[    LICENCIAS    ]>>>>>>>>>>>>>>>>>>>>>>>>>>+");
 
         Licencia licencia01 = new Licencia("Licencia 01");
@@ -229,13 +217,6 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
         licenciaRepository.save(new Licencia("Licencia 06"));
         licenciaRepository.save(new Licencia("Licencia 07"));
         licenciaRepository.save(new Licencia("Licencia 08"));
-
-
-        /*
-        escuela01.addLicencia(licencia01);
-        escuela02.addLicencia(licencia03);
-        escuela01.addLicencia(licencia02);
-         */
 
         licenciaRepository.save(licencia01);
         licenciaRepository.save(licencia02);
@@ -271,4 +252,5 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
         planeacionRepository.save(new Planeacion("Planeacion 07", "01-03-2020"));
 
     }
+    */
 }
