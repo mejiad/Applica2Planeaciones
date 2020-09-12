@@ -2,13 +2,13 @@ package com.evoltech.register.config;
 
 import com.evoltech.register.model.jpa.*;
 import com.evoltech.register.repository.*;
-import com.evoltech.register.util.ColeccionNivel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
+
 
 @Component
 public class ApplicationStartup implements ApplicationListener<ApplicationReadyEvent> {
@@ -32,6 +32,9 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
 
     @Autowired
     PlaneacionRepository planeacionRepository;
+
+    @Autowired
+    DocumentoRepository documentoRepository;
 
     @Override
     public void onApplicationEvent(final ApplicationReadyEvent event){
@@ -153,6 +156,69 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
         libroRepository.save(libro14);
         libroRepository.save(libro15);
 
+        log.warn("+<<<<<<<<<<<<<<<<<<<<<<<<[  DOCUMENTOS  ]>>>>>>>>>>>>>>>>>>>>>>>>>>+");
+
+        Documento documento01 = new Documento("Documento 01", "Descripcion del docuemento", "Uri del doc", "uri", "10-01-2020");
+        Documento documento02 = new Documento("Documento 02", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
+        Documento documento03 = new Documento("Documento 03", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
+        Documento documento04 = new Documento("Documento 04", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
+        Documento documento05 = new Documento("Documento 05", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
+        Documento documento06 = new Documento("Documento 06", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
+        Documento documento07 = new Documento("Documento 07", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
+        Documento documento08 = new Documento("Documento 08", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
+        Documento documento09 = new Documento("Documento 09", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
+        Documento documento10 = new Documento("Documento 10", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
+        Documento documento11 = new Documento("Documento 11", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
+        Documento documento12 = new Documento("Documento 12", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
+        Documento documento13 = new Documento("Documento 13", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
+        Documento documento14 = new Documento("Documento 14", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
+        Documento documento15 = new Documento("Documento 15", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
+        Documento documento16 = new Documento("Documento 16", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
+        Documento documento17 = new Documento("Documento 17", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
+        Documento documento18 = new Documento("Documento 18", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
+        Documento documento19 = new Documento("Documento 19", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
+        Documento documento20 = new Documento("Documento 20", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
+        Documento documento21 = new Documento("Documento 21", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
+
+        documentoRepository.save(documento01);
+        documentoRepository.save(documento02);
+        documentoRepository.save(documento03);
+        documentoRepository.save(documento04);
+        documentoRepository.save(documento05);
+        documentoRepository.save(documento06);
+        documentoRepository.save(documento07);
+        documentoRepository.save(documento08);
+        documentoRepository.save(documento09);
+        documentoRepository.save(documento10);
+        documentoRepository.save(documento11);
+        documentoRepository.save(documento12);
+        documentoRepository.save(documento13);
+        documentoRepository.save(documento14);
+        documentoRepository.save(documento15);
+        documentoRepository.save(documento16);
+        documentoRepository.save(documento17);
+        documentoRepository.save(documento18);
+        documentoRepository.save(documento19);
+        documentoRepository.save(documento20);
+        documentoRepository.save(documento21);
+
+        /*
+        libro01.addDocumento(documento01);
+        libro01.addDocumento(documento02);
+        libro01.addDocumento(documento03);
+        libro01.addDocumento(documento04);
+        libro01.addDocumento(documento05);
+        libro01.addDocumento(documento06);
+        libro01.addDocumento(documento07);
+
+        libro02.addDocumento(documento08);
+        libro02.addDocumento(documento09);
+        libro02.addDocumento(documento10);
+        libro02.addDocumento(documento11);
+
+         */
+
+
         log.warn("+<<<<<<<<<<<<<<<<<<<<<<<<[    LICENCIAS    ]>>>>>>>>>>>>>>>>>>>>>>>>>>+");
 
         Licencia licencia01 = new Licencia("Licencia 01");
@@ -179,15 +245,18 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
 
         log.warn("+<<<<<<<<<<<<<<<<<<<<<<<<[    PLANEACIONES    ]>>>>>>>>>>>>>>>>>>>>>>>>>>+");
 
-        Planeacion planeacion01 = new Planeacion("Planeacion 01");
-        Planeacion planeacion02 = new Planeacion("Planeacion 02");
-        Planeacion planeacion03 = new Planeacion("Planeacion 03");
-        Planeacion planeacion04 = new Planeacion("Planeacion 04");
+        Planeacion planeacion01 = new Planeacion("Planeacion 01", "10-10-2020");
+        Planeacion planeacion02 = new Planeacion("Planeacion 02", "10-09-2020");
+        Planeacion planeacion03 = new Planeacion("Planeacion 03", "10-08-2020");
+        Planeacion planeacion04 = new Planeacion("Planeacion 04", "09-07-2020");
+
 
         planeacionRepository.save(planeacion01);
         planeacionRepository.save(planeacion02);
         planeacionRepository.save(planeacion03);
         planeacionRepository.save(planeacion04);
+
+        planeacion01.addDocumento(documento01);
 
         libro01.addPlaneacion(planeacion01);
         libro02.addPlaneacion(planeacion02);
@@ -197,9 +266,9 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
         libroRepository.save(libro02);
         libroRepository.save(libro03);
 
-        planeacionRepository.save(new Planeacion("Planeacion 05"));
-        planeacionRepository.save(new Planeacion("Planeacion 06"));
-        planeacionRepository.save(new Planeacion("Planeacion 07"));
+        planeacionRepository.save(new Planeacion("Planeacion 05", "01-01-2020"));
+        planeacionRepository.save(new Planeacion("Planeacion 06", "01-02-2020"));
+        planeacionRepository.save(new Planeacion("Planeacion 07", "01-03-2020"));
 
     }
 }

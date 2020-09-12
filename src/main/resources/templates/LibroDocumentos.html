@@ -12,7 +12,7 @@
 
     <!-- Bootstrap core CSS
     -->
-    <link href="appcss/bootstrap.min.css" rel="stylesheet">
+    <link href="http://localhost:8080/register/appcss/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -31,7 +31,7 @@
       }
 .grid-container {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto ;
   grid-template-rows: auto auto;
   grid-gap: 2px;
   background-color: #BCC6CC;
@@ -46,7 +46,7 @@
 }
     </style>
     <!-- Custom styles for this template -->
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="http://localhost:8080/register/css/dashboard.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -108,7 +108,7 @@
             <div th:each="nivel : ${niveles}">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">
-                    <p th:text="${nivel[0].nivel}">value</p>
+                        <p th:text="${nivel[0].nivel}">value</p>
                     </h1>
                 </div>
                 <div class="grid-container" style="grid-auto-flow: row;">
@@ -125,7 +125,9 @@
                                     </div>
 
                                     <div class="card-body text-center">
-                                        <img src="images/ABC_trabajo_1_N3.png">
+                                        <!--
+                                        <img src="http://localhost:8080/register/images/ABC_trabajo_1_N3.png">
+                                        -->
                                         <ul class="list-unstyled mt-3 mb-4">
                                             <p th:text="${libro.categoria}">value</p>
                                         </ul>

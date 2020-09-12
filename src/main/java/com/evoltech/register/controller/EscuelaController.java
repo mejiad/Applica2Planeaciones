@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.List;
 
 @Controller
@@ -62,6 +61,37 @@ public class EscuelaController {
         model.addAttribute("niveles", niveles);
         return "Colecciones";
     }
+
+    @RequestMapping(value = "/libroDocs/{id}", method= RequestMethod.GET)
+    public String libroDocs(Model model){
+        List<Libro> libros = libroRepository.todosOrdenados("El ABC");
+
+        ArrayList<ArrayList<Libro>> niveles = new ArrayList<>();
+        String nivelStr = null;
+        ArrayList<Libro> librosArr = new ArrayList<>();
+        for (Libro l: libros) {
+            if (nivelStr == null){
+                nivelStr = l.getNivel();
+                librosArr = new ArrayList<>();
+            }
+            if (nivelStr.equals(l.getNivel())){
+                librosArr.add(l);
+                log.warn("Libro: " + l.getTitulo() + "  " +  l.getNombreColeccion() + " " +  l.getNivel());
+            } else {
+                niveles.add(librosArr);
+                librosArr = new ArrayList<>();
+                nivelStr = l.getNivel();
+                librosArr.add(l);
+            }
+        }
+        niveles.add(librosArr);
+        log.warn("Niveles: " + niveles.toString());
+
+        model.addAttribute("niveles", niveles);
+
+        return "LibroDocumentos";
+    }
+
     /*
     @RequestMapping(value = "/loginForm", method= RequestMethod.GET)
     public String loginForm(Model model){

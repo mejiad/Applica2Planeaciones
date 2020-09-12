@@ -7,11 +7,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.UUID;
 
 @Builder
 @NoArgsConstructor
@@ -50,20 +48,20 @@ public class Libro extends BaseJpaEntity<Long> implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     private Coleccion coleccion;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = false)
-    private List<Planeacion> planeaciones = new ArrayList<Planeacion>();
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Planeacion> planeaciones = new ArrayList<>();
 
     public void addPlaneacion(Planeacion planeacion){
         this.planeaciones.add(planeacion);
         planeacion.setLibro(this);
     }
 
-    public void removePlaneacion(Planeacion planeacion){
+    void removePlaneacion(Planeacion planeacion){
         planeacion.setLibro(null);
         this.planeaciones.remove(planeacion);
     }
 
-    public void removePlaneaciones() {
+    void removePlaneaciones(){
         Iterator<Planeacion> iterator = this.planeaciones.iterator();
 
         while(iterator.hasNext()){
@@ -73,5 +71,4 @@ public class Libro extends BaseJpaEntity<Long> implements Serializable {
             iterator.remove();
         }
     }
-
 }

@@ -4,11 +4,11 @@ import com.evoltech.register.model.base.BaseJpaEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.time.format.DateTimeFormatter;
 
 @Builder
 @AllArgsConstructor
@@ -18,17 +18,34 @@ import java.util.UUID;
 @Data
 public class Documento extends BaseJpaEntity<Long> implements Serializable {
 
+    public Documento(String nombre, String descripcion, String uri, String mimeType, String fechaStr){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.uri = uri;
+        this.mimeType = mimeType;
+        this.fecha= LocalDate.parse(fechaStr, formatter);
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nombre;
-    private String descripcion;
-    private String uri;
-    private String mimeType;
+    @NonNull @NotEmpty private String nombre;
+    @NonNull @NotEmpty private String descripcion;
+    @NonNull @NotEmpty private String uri;
+    @NonNull @NotEmpty private String mimeType;
+    @NonNull private LocalDate fecha;
     private String content;
 
-    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE})
-    private Set<Planeacion> planeaciones = new HashSet<Planeacion>();
+    /*
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "libro_id")
+    private Libro libro;
+     */
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "planeacion_id")
+    private Planeacion planeacion;
 
 }
