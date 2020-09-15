@@ -13,10 +13,10 @@ spring:
   jpa:
     show-sql: false
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     generate-ddl: true
   datasource:
-    initialization-mode: never
+    initialization-mode: always
     username: user01
     password: duke
     url: jdbc:postgresql://localhost:5432/dbdemo

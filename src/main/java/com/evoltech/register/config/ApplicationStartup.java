@@ -36,11 +36,6 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
     @Autowired
     DocumentoRepository documentoRepository;
 
-    public void onApplicationEvent(final ApplicationReadyEvent event) {
-        log.warn("<<<<<<<<<<<<<<<<<<<<<<<<    on Application ready   >>>>>>>>>>>>>>>>>>>>>>>>>>");
-    }
-
-    /*
     @Override
     public void onApplicationEvent(final ApplicationReadyEvent event){
         log.warn("<<<<<<<<<<<<<<<<<<<<<<<<    on Application ready   >>>>>>>>>>>>>>>>>>>>>>>>>>");
@@ -163,27 +158,27 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
 
         log.warn("+<<<<<<<<<<<<<<<<<<<<<<<<[  DOCUMENTOS  ]>>>>>>>>>>>>>>>>>>>>>>>>>>+");
 
-        Documento documento01 = new Documento("Documento 01", "Descripcion del docuemento", "Uri del doc", "uri", "10-01-2020");
-        Documento documento02 = new Documento("Documento 02", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
-        Documento documento03 = new Documento("Documento 03", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
-        Documento documento04 = new Documento("Documento 04", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
-        Documento documento05 = new Documento("Documento 05", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
-        Documento documento06 = new Documento("Documento 06", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
-        Documento documento07 = new Documento("Documento 07", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
-        Documento documento08 = new Documento("Documento 08", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
-        Documento documento09 = new Documento("Documento 09", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
-        Documento documento10 = new Documento("Documento 10", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
-        Documento documento11 = new Documento("Documento 11", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
-        Documento documento12 = new Documento("Documento 12", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
-        Documento documento13 = new Documento("Documento 13", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
-        Documento documento14 = new Documento("Documento 14", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
-        Documento documento15 = new Documento("Documento 15", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
-        Documento documento16 = new Documento("Documento 16", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
-        Documento documento17 = new Documento("Documento 17", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
-        Documento documento18 = new Documento("Documento 18", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
-        Documento documento19 = new Documento("Documento 19", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
-        Documento documento20 = new Documento("Documento 20", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
-        Documento documento21 = new Documento("Documento 21", "Descripcion del docuemento", "Uri del doc", "uri", "10-10-2020");
+        Documento documento01 = new Documento("Documento 01", "Descripcion del documento", " https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.pdf", "pdf", "10-01-2020");
+        Documento documento02 = new Documento("Documento 02", "Descripcion del documento", "https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.pdf", "audio", "10-10-2020");
+        Documento documento03 = new Documento("Documento 03", "Descripcion del documento", "Uri del doc", "video", "10-10-2020");
+        Documento documento04 = new Documento("Documento 04", "Descripcion del documento", "Uri del doc", "video", "10-10-2020");
+        Documento documento05 = new Documento("Documento 05", "Descripcion del documento", "Uri del doc", "imagen", "10-10-2020");
+        Documento documento06 = new Documento("Documento 06", "Descripcion del documento", "Uri del doc", "imagen", "10-10-2020");
+        Documento documento07 = new Documento("Documento 07", "Descripcion del documento", "https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.pdf", "pdf", "10-10-2020");
+        Documento documento08 = new Documento("Documento 08", "Descripcion del documento", "Uri del doc", "youtube", "10-10-2020");
+        Documento documento09 = new Documento("Documento 09", "Descripcion del documento", "Uri del doc", "youtube", "10-10-2020");
+        Documento documento10 = new Documento("Documento 10", "Descripcion del documento", "Uri del doc", "imagen", "10-10-2020");
+        Documento documento11 = new Documento("Documento 11", "Descripcion del documento", "Uri del doc", "imagen", "10-10-2020");
+        Documento documento12 = new Documento("Documento 12", "Descripcion del documento", "Uri del doc", "video", "10-10-2020");
+        Documento documento13 = new Documento("Documento 13", "Descripcion del documento", "Uri del doc", "imagen", "10-10-2020");
+        Documento documento14 = new Documento("Documento 14", "Descripcion del documento", "https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.pdf", "pdf", "10-10-2020");
+        Documento documento15 = new Documento("Documento 15", "Descripcion del documento", "Uri del doc", "video", "10-10-2020");
+        Documento documento16 = new Documento("Documento 16", "Descripcion del documento", "Uri del doc", "youtube", "10-10-2020");
+        Documento documento17 = new Documento("Documento 17", "Descripcion del documento", "Uri del doc", "audio", "10-10-2020");
+        Documento documento18 = new Documento("Documento 18", "Descripcion del documento", "https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.pdf", "pdf", "10-10-2020");
+        Documento documento19 = new Documento("Documento 19", "Descripcion del documento", "https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.pdf", "pdf", "10-10-2020");
+        Documento documento20 = new Documento("Documento 20", "Descripcion del documento", "Uri del doc", "audio", "10-10-2020");
+        Documento documento21 = new Documento("Documento 21", "Descripcion del documento", "Uri del doc", "audio", "10-10-2020");
 
         documentoRepository.save(documento01);
         documentoRepository.save(documento02);
@@ -230,27 +225,82 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
         Planeacion planeacion02 = new Planeacion("Planeacion 02", "10-09-2020");
         Planeacion planeacion03 = new Planeacion("Planeacion 03", "10-08-2020");
         Planeacion planeacion04 = new Planeacion("Planeacion 04", "09-07-2020");
-
+        Planeacion planeacion05 = new Planeacion("Planeacion 05", "09-07-2020");
+        Planeacion planeacion06 = new Planeacion("Planeacion 06", "09-07-2020");
+        Planeacion planeacion07 = new Planeacion("Planeacion 07", "09-07-2020");
+        Planeacion planeacion09 = new Planeacion("Planeacion 08", "09-07-2020");
+        Planeacion planeacion10 = new Planeacion("Planeacion 09", "09-07-2020");
+        Planeacion planeacion11 = new Planeacion("Planeacion 10", "09-07-2020");
+        Planeacion planeacion12 = new Planeacion("Planeacion 11", "09-07-2020");
+        Planeacion planeacion13 = new Planeacion("Planeacion 12", "09-07-2020");
+        Planeacion planeacion14 = new Planeacion("Planeacion 13", "09-07-2020");
+        Planeacion planeacion15 = new Planeacion("Planeacion 14", "09-07-2020");
+        Planeacion planeacion16 = new Planeacion("Planeacion 15", "09-07-2020");
+        Planeacion planeacion17 = new Planeacion("Planeacion 16", "09-07-2020");
+        Planeacion planeacion18 = new Planeacion("Planeacion 17", "09-07-2020");
+        Planeacion planeacion19 = new Planeacion("Planeacion 18", "09-07-2020");
+        Planeacion planeacion20 = new Planeacion("Planeacion 19", "09-07-2020");
+        Planeacion planeacion08 = new Planeacion("Planeacion 20", "09-07-2020");
 
         planeacionRepository.save(planeacion01);
         planeacionRepository.save(planeacion02);
         planeacionRepository.save(planeacion03);
         planeacionRepository.save(planeacion04);
+        planeacionRepository.save(planeacion05);
+        planeacionRepository.save(planeacion06);
+        planeacionRepository.save(planeacion07);
+        planeacionRepository.save(planeacion08);
+        planeacionRepository.save(planeacion09);
+        planeacionRepository.save(planeacion10);
+        planeacionRepository.save(planeacion11);
+        planeacionRepository.save(planeacion12);
+        planeacionRepository.save(planeacion13);
+        planeacionRepository.save(planeacion14);
+        planeacionRepository.save(planeacion15);
+        planeacionRepository.save(planeacion16);
+        planeacionRepository.save(planeacion17);
+        planeacionRepository.save(planeacion18);
+        planeacionRepository.save(planeacion19);
+        planeacionRepository.save(planeacion20);
 
+        log.warn("+<<<<<<<<<<<<<<<<<<<<<<<<[    PLANEACIONES 1    ]>>>>>>>>>>>>>>>>>>>>>>>>>>+");
         planeacion01.addDocumento(documento01);
+        planeacion01.addDocumento(documento02);
+        planeacion01.addDocumento(documento03);
+        planeacion01.addDocumento(documento04);
+        planeacion01.addDocumento(documento05);
 
+        log.warn("+<<<<<<<<<<<<<<<<<<<<<<<<[    PLANEACIONES 2    ]>>>>>>>>>>>>>>>>>>>>>>>>>>+");
+        planeacion02.addDocumento(documento06);
+        planeacion02.addDocumento(documento07);
+        planeacion02.addDocumento(documento08);
+
+        log.warn("+<<<<<<<<<<<<<<<<<<<<<<<<[    PLANEACIONES 3    ]>>>>>>>>>>>>>>>>>>>>>>>>>>+");
+        planeacion03.addDocumento(documento09);
+        planeacion03.addDocumento(documento10);
+
+        planeacion04.addDocumento(documento11);
+        planeacion04.addDocumento(documento12);
+
+        log.warn("+<<<<<<<<<<<<<<<<<<<<<<<<[    LIBRO-PLANEACIONES 1    ]>>>>>>>>>>>>>>>>>>>>>>>>>>+");
         libro01.addPlaneacion(planeacion01);
-        libro02.addPlaneacion(planeacion02);
-        libro03.addPlaneacion(planeacion03);
         libro01.addPlaneacion(planeacion04);
+
         libroRepository.save(libro01);
+
+        log.warn("+<<<<<<<<<<<<<<<<<<<<<<<<[    LIBRO-PLANEACIONES 2    ]>>>>>>>>>>>>>>>>>>>>>>>>>>+");
+
+        libro02.addPlaneacion(planeacion02);
         libroRepository.save(libro02);
+
+
+        log.warn("+<<<<<<<<<<<<<<<<<<<<<<<<[    LIBRO-PLANEACIONES 3    ]>>>>>>>>>>>>>>>>>>>>>>>>>>+");
+
+        libro03.addPlaneacion(planeacion03);
+        libro03.addPlaneacion(planeacion05);
+
         libroRepository.save(libro03);
 
-        planeacionRepository.save(new Planeacion("Planeacion 05", "01-01-2020"));
-        planeacionRepository.save(new Planeacion("Planeacion 06", "01-02-2020"));
-        planeacionRepository.save(new Planeacion("Planeacion 07", "01-03-2020"));
 
     }
-    */
 }

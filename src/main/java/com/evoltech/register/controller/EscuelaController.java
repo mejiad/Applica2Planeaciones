@@ -1,8 +1,10 @@
 package com.evoltech.register.controller;
 
+import com.evoltech.register.model.jpa.Documento;
 import com.evoltech.register.model.jpa.Escuela;
 import com.evoltech.register.model.jpa.Libro;
 import com.evoltech.register.model.jpa.Planeacion;
+import com.evoltech.register.repository.DocumentoRepository;
 import com.evoltech.register.repository.EscuelaRepository;
 import com.evoltech.register.repository.LibroRepository;
 import org.slf4j.Logger;
@@ -28,6 +30,9 @@ public class EscuelaController {
 
     @Autowired
     LibroRepository libroRepository;
+
+    @Autowired
+    DocumentoRepository documentoRepository;
 
     @RequestMapping(value = "/home", method= RequestMethod.GET)
     public String home(Model model){
@@ -78,6 +83,28 @@ public class EscuelaController {
         model.addAttribute("planeaciones", planeaciones);
 
         return "Planeaciones";
+    }
+
+
+    @RequestMapping(value = "/documento/{id}", method= RequestMethod.GET)
+    public String documento(@PathVariable String id, Model model){
+
+        long idLong = 0L;
+        try {
+            idLong = Long.parseLong(id);
+        } catch (Exception e){
+            model.addAttribute("request","documento/{id}");
+            model.addAttribute("error","documento id invalido");
+            return "error";
+        }
+        if (idLong > 0) {
+            Documento documento = documentoRepository.getOne(idLong);
+            model.addAttribute("documento", documento);
+        } else {
+            return "error";
+        }
+
+        return "Documento";
     }
 
     /*
