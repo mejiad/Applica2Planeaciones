@@ -6,13 +6,13 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
-    <title>Dashboard Template · Bootstrap</title>
+    <title>Colecciones</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
 
     <!-- Bootstrap core CSS
     -->
-    <link href="appcss/bootstrap.min.css" rel="stylesheet">
+    <link href="http://localhost:8080/appcss/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -34,7 +34,7 @@
   grid-template-columns: auto auto auto;
   grid-template-rows: auto auto;
   grid-gap: 2px;
-  background-color: #BCC6CC;
+  background-color: #9F81F7;
   padding: 2px;
 }
 
@@ -46,11 +46,11 @@
 }
     </style>
     <!-- Custom styles for this template -->
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="http://localhost:8080/css/dashboard.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Company name</a>
+    <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Applica2</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -70,31 +70,26 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="#">
                             <span data-feather="home"></span>
-                            El ABC <span class="sr-only">(current)</span>
+                            <a href="/colecciones/El ABC" class="btn ">El ABC</a>
+                            <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <span data-feather="file"></span>
-                            El 123
+                            <a href="/colecciones/El 123" class="btn ">El 123</a>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
+                            <a href="/colecciones/Multicampos" class="btn ">Multicampos</a>
                             <span data-feather="shopping-cart"></span>
-                            Multicampos
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
+                            <a href="/colecciones/Letra Cursiva" class="btn ">Letra Cursiva</a>
                             <span data-feather="users"></span>
-                            Letra Cursiva
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="bar-chart-2"></span>
-                            I do Speak English
                         </a>
                     </li>
                 </ul>
@@ -125,11 +120,11 @@
                                     </div>
 
                                     <div class="card-body text-center">
-                                        <img src="images/ABC_trabajo_1_N3.png">
+                                        <img src="http://localhost:8080/images/ABC_trabajo_1_N3.png">
                                         <ul class="list-unstyled mt-3 mb-4">
                                             <p th:text="${libro.categoria}">value</p>
                                         </ul>
-                                        <button type="button" class="btn btn-lg btn-block btn-primary">Get started</button>
+                                        <button type="button" class="btn btn-lg btn-block btn-primary"><a href="/planeacion/16" class="btn btn-lg btn-primary">Entrar</a></button>
                                     </div>
 
                                 </div>
@@ -143,9 +138,12 @@
         </main>
     </div>
 </div>
+<!--
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="js/dist/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-<script src="js/dist/dashboard.js"></script></body>
+<script src="js/dist/dashboard.js"></script>
+-->
+</body>
 </body></html>

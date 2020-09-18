@@ -12,7 +12,7 @@
 
     <!-- Bootstrap core CSS
     -->
-    <link href="http://localhost:8080/register/appcss/bootstrap.min.css" rel="stylesheet">
+    <link href="http://localhost:8080/appcss/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -46,7 +46,7 @@
 }
     </style>
     <!-- Custom styles for this template -->
-    <link href="http://localhost:8080/register/css/dashboard.css" rel="stylesheet">
+    <link href="http://localhost:8080/css/dashboard.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -135,7 +135,7 @@
                                         <p th:text="${doc.nombre}">value</p>
                                     </td>
                                     <td>
-                                        <a th:href="@{http://localhost:8080/register/documento/{orderId}(orderId=${doc.id})}">view</a>
+                                        <a th:href="@{http://localhost:8080/documento/{orderId}(orderId=${doc.id})}">view</a>
                                     </td>
                                     <td>
                                         <p th:text="${doc.mimeType}">value</p>
