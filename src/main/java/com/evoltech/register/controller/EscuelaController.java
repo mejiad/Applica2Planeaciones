@@ -41,7 +41,7 @@ public class EscuelaController {
     @RequestMapping(value = "/colecciones/{coleccion}", method= RequestMethod.GET)
     public String colecciones(@PathVariable String coleccion, Model model){
         log.warn(" Coleccion: " + coleccion);
-        if (coleccion != null || coleccion.length() == 0) {
+        if (coleccion == null || coleccion.length() == 0) {
             coleccion = "El ABC";
         }
         // coleccion = "El ABC";
@@ -65,9 +65,13 @@ public class EscuelaController {
                 librosArr.add(l);
             }
         }
-        niveles.add(librosArr);
-        log.warn("Niveles: " + niveles.toString());
+        log.warn("Antes de Niveles: " );
+        if(librosArr.size() > 0){
+            niveles.add(librosArr);
+        }
+        // log.warn("Niveles: " + niveles.toString());
 
+        model.addAttribute("coleccion", coleccion);
         model.addAttribute("niveles", niveles);
         return "Colecciones";
     }

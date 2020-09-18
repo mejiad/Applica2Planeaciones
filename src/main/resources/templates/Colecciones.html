@@ -102,8 +102,11 @@
 
             <div th:each="nivel : ${niveles}">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h1">
+                        <p th:text="${coleccion}">value</p>
+                    </h1>
                     <h1 class="h2">
-                    <p th:text="${nivel[0].nivel}">value</p>
+                        <p th:text="${nivel[0].nivel}"></p>
                     </h1>
                 </div>
                 <div class="grid-container" style="grid-auto-flow: row;">
