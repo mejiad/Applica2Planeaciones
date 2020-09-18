@@ -127,7 +127,7 @@
                                         <ul class="list-unstyled mt-3 mb-4">
                                             <p th:text="${libro.categoria}">value</p>
                                         </ul>
-                                        <button type="button" class="btn btn-lg btn-block btn-primary"><a href="/planeacion/16" class="btn btn-lg btn-primary">Entrar</a></button>
+                                        <button type="button" class="btn btn-lg btn-block btn-primary"><a th:href="@{/planeacion/{libroId}(libroId=${libro.getId()})}" class="btn btn-lg btn-primary">Entrar</a></button>
                                     </div>
 
                                 </div>

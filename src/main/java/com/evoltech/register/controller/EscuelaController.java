@@ -77,10 +77,10 @@ public class EscuelaController {
     }
 
     @RequestMapping(value = "/planeacion/{id}", method= RequestMethod.GET)
-    public String planeaciones(@PathVariable String id, Model model){
+    public String planeaciones(@PathVariable Long id, Model model){
         log.warn("Id del libro a buscar (debe ser 16 para test): " + id);
-        Long idLong = Long.getLong(id);
-        Libro libro = libroRepository.getOne(16L);
+        // Long idLong = Long.getLong(id);
+        Libro libro = libroRepository.getOne(id);
         log.warn("Libro: " + libro.getTitulo());
         log.warn("Libro.getPlaneaciones().size(): " + libro.getPlaneaciones().size());
 
