@@ -19,7 +19,7 @@ spring:
     initialization-mode: always
     username: user01
     password: duke
-    url: jdbc:postgresql://localhost:5432/dbdemo
+    url: jdbc:postgresql://localhost:5432/applicados
     driverClassName: org.postgresql.Driver
   mvc:
     static-path-pattern=/static/**

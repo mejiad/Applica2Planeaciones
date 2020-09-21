@@ -106,11 +106,14 @@ public class EscuelaController {
         if (idLong > 0) {
             Documento documento = documentoRepository.getOne(idLong);
             model.addAttribute("documento", documento);
+            if (documento.getMimeType().equals("imagen")){
+                return "Carrousel";
+            } else {
+                return "Documento";
+            }
         } else {
             return "error";
         }
-
-        return "Documento";
     }
 
     /*
