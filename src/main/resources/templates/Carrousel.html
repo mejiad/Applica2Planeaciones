@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
-    <title>Dashboard Template · Bootstrap</title>
+    <title>Carrousel</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
 
@@ -122,13 +122,13 @@
             <p th:text="${documento.getUri()}">value</p>
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active" data-interval=10000000 >
+                            <div class="carousel-item active" data-pause="true" data-interval=10000000 >
                                 <img src="http://localhost:8080/images/back01_640x480.jpg" class="d-block w-100" alt="responsive image">
                             </div>
-                            <div class="carousel-item">
+                            <div class="carousel-item" data-pause="true">
                                 <img src="http://localhost:8080/images/back02_640x480.jpg" class="d-block w-100" alt="responsive image">
                             </div>
-                            <div class="carousel-item">
+                            <div class="carousel-item" data-pause="true">
                                 <img src="http://localhost:8080/images/back03_640x480.jpg" class="d-block w-100" alt="responsive image">
                             </div>
                         </div>

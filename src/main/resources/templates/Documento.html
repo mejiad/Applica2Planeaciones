@@ -128,14 +128,16 @@
                 </p>
                 <p th:case="'video'">
                     <iframe width="560" height="315"
-                            src="https://www.youtube.com/embed/EsQ6YeU5gPQ"
+                            th:attr="src=${documento.getUri()}"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen>
                     </iframe>
                 </p>
                 <p th:case="'audio'">
-                    <audio src="http://developer.mozilla.org/@api/deki/files/2926/=AudioTest_(1).ogg" controls>
+                    <audio
+                            th:attr="src=${documento.getUri()}"
+                            controls>
                         Your browser does not support the <code>audio</code> element.
                     </audio>
                 </p>
