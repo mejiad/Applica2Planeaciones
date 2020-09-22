@@ -54,6 +54,7 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
         createLibro(10, "El 123", "Nivel 2");
         createLibro(10, "El 123", "Nivel 3");
 
+        log.warn("<<<<<<<<<<<<<<<<<<<    Inicializacion terminada database  >>>>>>>>>>>>>>>>");
     }
 
 
@@ -111,7 +112,6 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
             Planeacion planeacion = new Planeacion(nombre , descripcion, unidad, date);
             // planeacionRepository.save(planeacion);
             libro.addPlaneacion(planeacion);
-            log.warn("id del libro: " + libro.getId());
             addDocumentos(planeacion);
         }
     }
@@ -158,15 +158,18 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
     private void addDocumentos(Planeacion planeacion){
         Random rand = new Random();
         int numDocs = rand.nextInt(MAX_DOCUMENTOS) + 1;
-        for(int i = 0; i < numDocs; i++){
+        for(int i = 0; i < numDocs; i++) {
             int idxNombre = rand.nextInt(docsNombres.length);
-           // public Documento(String nombre, String descripcion, String uri, String mimeType, String fechaStr){
+            // public Documento(String nombre, String descripcion, String uri, String mimeType, String fechaStr){
             String mime = getMimetype();
             String link = getLink(mime);
             String nombre = docsNombres[idxNombre];
             String descr = docsDescr[idxNombre];
-
-           Documento doc = new Documento(nombre, descr,  link,  mime, "20-09-2020");
+            String[] archivos = new String[]{ "http://localhost:8080/images/back01_640x480.jpg",
+                    "http://localhost:8080/images/back02_640x480.jpg",
+                    "http://localhost:8080/images/back03_640x480.jpg"
+                };
+           Documento doc = new Documento(nombre, descr,  link,  mime, "20-09-2020", archivos);
 
            // documentoRepository.save(doc);
            planeacion.addDocumento(doc);

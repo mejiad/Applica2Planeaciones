@@ -128,14 +128,8 @@
             <p th:text="${documento.getFecha()}">value</p>
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active" data-pause="true" data-interval=10000000 >
-                                <img src="http://localhost:8080/images/back01_640x480.jpg" class="d-block w-100" alt="responsive image">
-                            </div>
-                            <div class="carousel-item" data-pause="true">
-                                <img src="http://localhost:8080/images/back02_640x480.jpg" class="d-block w-100" alt="responsive image">
-                            </div>
-                            <div class="carousel-item" data-pause="true">
-                                <img src="http://localhost:8080/images/back03_640x480.jpg" class="d-block w-100" alt="responsive image">
+                            <div th:each="archivo, iterStat : ${documento.archivos}" th:class="${iterStat.first}? 'carousel-item active' : 'carousel-item'" data-pause="true" >
+                                <img th:attr="src=${archivo}" class="d-block w-100" alt="responsive image">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -147,7 +141,6 @@
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
-            <p th:text="${documento.getUri()}">value</p>
         </main>
     </div>
 </div>
