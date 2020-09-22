@@ -39,8 +39,6 @@ public class Documento extends BaseJpaEntity<Long> implements Serializable {
     @NonNull private LocalDate fecha;
     private String content;
 
-    @OneToMany
-    private ArrayList<Archivo> archivos = new ArrayList<Archivo>();
 
     /*
     @ManyToOne(fetch = FetchType.LAZY)
