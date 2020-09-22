@@ -74,13 +74,14 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="#">
                             <span data-feather="home"></span>
-                            El ABC <span class="sr-only">(current)</span>
+                            <a href="/colecciones/El ABC" class="btn ">El ABC</a>
+                            <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <span data-feather="file"></span>
-                            El 123
+                            <a href="/colecciones/El 123" class="btn ">El 123</a>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -101,6 +102,13 @@
                             I do Speak English
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            <span data-feather="home"></span>
+                            <a href="/home" class="btn ">home</a>
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
                 </ul>
 
             </div>
@@ -114,12 +122,10 @@
                 </h1>
             </div>
 
-            <p th:text="${documento.getFecha()}">value</p>
-            <h4>
+            <h2>
             <p th:text="${documento.getDescripcion()}">value</p>
-            </h4>
-            <p th:text="${documento.getMimeType()}">value</p>
-            <p th:text="${documento.getUri()}">value</p>
+            </h2>
+            <p th:text="${documento.getFecha()}">value</p>
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active" data-pause="true" data-interval=10000000 >
@@ -141,6 +147,7 @@
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
+            <p th:text="${documento.getUri()}">value</p>
         </main>
     </div>
 </div>

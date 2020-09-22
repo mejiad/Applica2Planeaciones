@@ -119,7 +119,7 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
     private int MAX_DOCUMENTOS = 6;
     String[] docsNombres = {"Actividades", "Guía Pedagógica", "Tareas", "Ejercicios"};
 
-    String[] docsDescr = {"Actividades dentro del salon de clases", "Guía Pedagógica par ala maestra", "Tareas y ejercicios para hacer en casa", "Ejercicios dentro del salón de clase"};
+    String[] docsDescr = {"Actividades dentro del salon de clases", "Guía Pedagógica para la maestra", "Tareas y ejercicios para hacer en casa", "Ejercicios dentro del salón de clase"};
 
     String[] mimeType = {"pdf", "audio", "video", "imagen"};
 

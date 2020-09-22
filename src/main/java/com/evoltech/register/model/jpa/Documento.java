@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 @Builder
 @AllArgsConstructor
@@ -37,6 +38,9 @@ public class Documento extends BaseJpaEntity<Long> implements Serializable {
     @NonNull @NotEmpty private String mimeType;
     @NonNull private LocalDate fecha;
     private String content;
+
+    @OneToMany
+    private ArrayList<Archivo> archivos = new ArrayList<Archivo>();
 
     /*
     @ManyToOne(fetch = FetchType.LAZY)
